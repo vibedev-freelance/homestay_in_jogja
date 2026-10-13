@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link rel="icon" type="image/webp" href="assets/Logo/Logo%20Utama.webp"/>
+  <title>Omah Pakualaman — Homestay dekat Malioboro & pusat kota Jogja</title>
+  <meta name="description" content="Omah Pakualaman adalah Homestay dekat Malioboro, Homestay Jogja dekat pusat kota, Homestay keluarga di Jogja, dan pilihan Homestay rombongan Jogja murah dengan fasilitas lengkap."/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+      .homestay-card-entrance {
+      opacity: 0;
+      transform: translateY(32px) scale(0.97);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .homestay-card-entrance.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  
+      /* Jumbotron Text Entrance Animations */
+      @keyframes heroFadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-entrance-1 {
+        opacity: 0;
+        animation: heroFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+      }
+      .hero-entrance-2 {
+        opacity: 0;
+        animation: heroFadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+      }
+      .hero-entrance-3 {
+        opacity: 0;
+        animation: heroFadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+      }
+      .hero-entrance-4 {
+        opacity: 0;
+        animation: heroFadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-entrance-1,
+        .hero-entrance-2,
+        .hero-entrance-3,
+        .hero-entrance-4 {
+          opacity: 1 !important;
+          transform: none !important;
+          animation: none !important;
+        }
+      }
+
+    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-fixed-variant": "#3d4756",
+            "on-error-container": "#93000a",
+            "on-secondary-container": "#596373",
+            "secondary-container": "#d6e0f3",
+            "surface-warm": "#FAFAFA",
+            "outline-variant": "#c2d3e5",
+            "surface-bright": "#f8faff",
+            "secondary-fixed-dim": "#bdc7d9",
+            "primary-fixed": "#d4e4f5",
+            "tertiary-container": "#0095fc",
+            "surface-container-highest": "#d4e4f5",
+            "on-background": "#111c27",
+            "error-container": "#ffdad6",
+            "surface-muted": "#F3F4F6",
+            "inverse-on-surface": "#ebf3fc",
+            "secondary-fixed": "#d9e3f6",
+            "tertiary-fixed": "#d2e4ff",
+            "border-subtle": "#E5E7EB",
+            "error": "#ba1a1a",
+            "on-tertiary-container": "#002c50",
+            "surface-dim": "#d4e4f5",
+            "surface-container-high": "#e8f1fa",
+            "surface-container": "#eff5fc",
+            "tertiary-fixed-dim": "#a0c9ff",
+            "on-surface-variant": "#415163",
+            "on-primary-container": "#ffffff",
+            "brand-accent-amber": "#024783",
+            "tertiary": "#0061a6",
+            "surface-variant": "#d4e4f5",
+            "secondary": "#555f6f",
+            "on-tertiary-fixed-variant": "#00497f",
+            "on-primary-fixed-variant": "#013563",
+            "on-error": "#ffffff",
+            "inverse-primary": "#adcbe9",
+            "on-primary-fixed": "#001d38",
+            "on-tertiary": "#ffffff",
+            "background": "#f8faff",
+            "surface-tint": "#024783",
+            "inverse-surface": "#1b2a3a",
+            "primary-container": "#024783",
+            "on-surface": "#111c27",
+            "whatsapp-green": "#25D366",
+            "surface-container-low": "#f4f8fd",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#f8faff",
+            "primary": "#024783",
+            "status-promo": "#EF4444",
+            "on-tertiary-fixed": "#001c37",
+            "outline": "#728499",
+            "on-secondary-fixed": "#121c2a",
+            "primary-fixed-dim": "#adcbe9"
+          },
+          borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+          spacing: {
+            margin: "1.5rem", "space-xs": "0.25rem", "space-md": "1rem",
+            "space-sm": "0.5rem", "space-lg": "1.5rem", gutter: "1.5rem", "space-xl": "2.5rem"
+          },
+          fontFamily: {
+            "body-sm": ["Plus Jakarta Sans"], "headline-hero": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"],
+            "label-badge": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"], "headline-hero-mobile": ["Plus Jakarta Sans"],
+            "price-lg": ["Plus Jakarta Sans"]
+          },
+          fontSize: {
+            "body-sm": ["12px", { lineHeight: "18px", fontWeight: "400" }],
+            "headline-hero": ["48px", { lineHeight: "56px", fontWeight: "800" }],
+            "headline-lg": ["20px", { lineHeight: "28px", fontWeight: "700" }],
+            "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "label-badge": ["11px", { lineHeight: "14px", fontWeight: "700" }],
+            "headline-xl": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+            "headline-md": ["16px", { lineHeight: "24px", fontWeight: "700" }],
+            "headline-xl-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+            "body-md": ["14px", { lineHeight: "22px", fontWeight: "400" }],
+            "headline-hero-mobile": ["30px", { lineHeight: "38px", fontWeight: "800" }],
+            "price-lg": ["18px", { lineHeight: "24px", fontWeight: "800" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+
+<!-- ============================================================ HEADER -->
+<header class="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 pointer-events-none">
+  <div class="max-w-7xl mx-auto h-16 sm:h-20 px-4 sm:px-8 rounded-full bg-[#1e293b]/85 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.25)] flex items-center justify-between gap-2 sm:gap-4 pointer-events-auto">
+
+    <!-- Brand / Logo (Rata Kiri) -->
+    <a class="flex items-center gap-2.5 sm:gap-3 group shrink-0" href="index.html">
+      <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex-shrink-0 bg-white/10 border border-white/20">
+        <img alt="Logo Homestay in Jogja" class="w-full h-full object-cover"
+          src="assets/Logo/Logo Utama.webp"/>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-sm sm:text-headline-md tracking-tight text-white group-hover:text-primary-fixed-dim transition-colors leading-tight font-bold">Homestay in Jogja</span>
+        <span class="text-[11px] sm:text-body-sm text-slate-300 font-medium leading-none hidden xs:inline-block">Penyedia Jasa &amp; Homestay</span>
+      </div>
+    </a>
+
+    <!-- Navigation & Action Buttons (Rata Kanan) -->
+    <div class="flex items-center gap-2 sm:gap-3 lg:gap-4">
+      <nav class="hidden md:flex items-center gap-1">
+        <a id="nav-home" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="index.html">Home</a>
+        <a id="nav-homestay" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all bg-primary-container text-white font-bold shadow-sm" href="homestay.html">Homestay</a>
+        <a id="nav-fasilitas" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="fasilitas.html">Fasilitas</a>
+        <a id="nav-faq" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="faq.html">FAQ</a>
+        <a id="nav-kontak" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="kontak.html">Kontak</a>
+      </nav>
+
+      <a id="btn-reservasi-header"
+        class="hidden sm:inline-flex items-center gap-2 bg-primary-container hover:bg-primary text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-body-md text-body-md font-bold shadow-lg transition-all border border-white/10 shrink-0"
+        href="https://wa.me/6281229605040" rel="noopener noreferrer" target="_blank">
+        <span class="material-symbols-outlined text-base">calendar_month</span>
+        <span>Reservasi</span>
+      </a>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button id="btn-mobile-menu-toggle" type="button" aria-label="Buka Menu Navigasi"
+        class="md:hidden flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 text-white hover:bg-white/20 active:scale-95 transition-all focus:outline-none">
+        <span id="mobile-menu-icon" class="material-symbols-outlined text-xl sm:text-2xl transition-transform duration-200">menu</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile Navigation Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden mt-2.5 max-w-7xl mx-auto rounded-3xl bg-[#1e293b]/95 backdrop-blur-2xl border border-white/15 shadow-[0_16px_40px_rgba(0,0,0,0.4)] p-4 pointer-events-auto transition-all duration-300">
+    <nav class="flex flex-col gap-1.5">
+      <a id="mobile-nav-home" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="index.html">
+        <span class="material-symbols-outlined text-xl text-primary-fixed-dim">home</span>
+        <span class="font-medium">Home</span>
+      </a>
+      <a id="mobile-nav-homestay" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all bg-primary-container text-white font-bold shadow-sm" href="homestay.html">
+        <span class="material-symbols-outlined text-xl text-primary-fixed-dim">apartment</span>
+        <span class="font-medium">Homestay</span>
+      </a>
+      <a id="mobile-nav-fasilitas" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="fasilitas.html">
+        <span class="material-symbols-outlined text-xl text-primary-fixed-dim">hotel</span>
+        <span class="font-medium">Fasilitas</span>
+      </a>
+      <a id="mobile-nav-faq" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="faq.html">
+        <span class="material-symbols-outlined text-xl text-primary-fixed-dim">help</span>
+        <span class="font-medium">FAQ</span>
+      </a>
+      <a id="mobile-nav-kontak" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="kontak.html">
+        <span class="material-symbols-outlined text-xl text-primary-fixed-dim">call</span>
+        <span class="font-medium">Kontak</span>
+      </a>
+      <div class="pt-3 border-t border-white/10 mt-1 flex flex-col gap-2">
+        <a class="flex items-center justify-center gap-2 bg-primary-container hover:bg-primary text-white py-3 rounded-2xl font-body-md font-bold shadow-md transition-all"
+          href="https://wa.me/6281229605040" rel="noopener noreferrer" target="_blank">
+          <span class="material-symbols-outlined text-lg">calendar_month</span>
+          <span>Reservasi via WhatsApp</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="w-full pt-20 bg-surface flex-grow">
+  <div class="flex flex-col w-full">
+
+    <!-- BREADCRUMB & HERO BANNER -->
+    <section class="w-full pt-6 pb-4 bg-surface-container-low border-b border-border-subtle">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-3">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant hero-entrance-1">
+          <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+          <span class="material-symbols-outlined text-sm">chevron_right</span>
+          <a href="homestay.html" class="hover:text-primary transition-colors">Homestay</a>
+          <span class="material-symbols-outlined text-sm">chevron_right</span>
+          <span class="text-on-surface font-semibold">Omah Pakualaman</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- PROPERTY HEADER -->
+    <section class="w-full pt-8 bg-surface">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="flex items-center gap-3 sm:gap-4 md:gap-5">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border border-border-subtle bg-surface-container-low shadow-sm">
+            <img class="w-full h-full object-cover" src="assets/Logo/Omah Pakualaman_.webp" alt="Logo Omah Pakualaman"/>
+          </div>
+          <div>
+            <p class="text-[11px] sm:text-xs uppercase tracking-[0.22em] text-on-surface-variant font-semibold">Homestay</p>
+            <h1 class="font-headline-hero text-headline-hero-mobile lg:text-headline-hero text-on-surface font-extrabold tracking-tight leading-none">
+              Omah Pakualaman
+            </h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT GALLERY HERO -->
+    <section class="w-full py-8 bg-surface">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+          <!-- Main Image (8 cols) -->
+          <div class="lg:col-span-8 rounded-3xl overflow-hidden aspect-video relative group bg-surface-muted shadow-md">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              alt="Omah Pakualaman — Homestay di Yogyakarta"
+              src="assets/Omah Pakualaman/IMG_3178.JPG.webp"/>
+            <div class="absolute top-4 left-4 bg-primary-container text-on-primary font-label-badge text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md uppercase tracking-wider">
+              Gallery Omah Pakualaman
+            </div>
+          </div>
+
+          <!-- Secondary Image Grid (4 cols) -->
+          <div class="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-6">
+            <div class="rounded-2xl overflow-hidden aspect-video relative group bg-surface-muted shadow-sm">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                alt="Fasilitas Kolam Renang Omah Pakualaman"
+                src="assets/Omah Pakualaman/IMG_3180.JPG.webp"/>
+            </div>
+            <div class="rounded-2xl overflow-hidden aspect-video relative group bg-surface-muted shadow-sm">
+              <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                alt="Kamar Tidur Nyaman AC Omah Pakualaman"
+                src="assets/Omah Pakualaman/IMG_3183.JPG.webp"/>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT DETAILS & SIDEBAR BOOKING -->
+    <section class="w-full py-8 lg:py-16 bg-surface">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+        <!-- Left Column: Details (8 cols) -->
+        <div class="lg:col-span-8 flex flex-col gap-10">
+
+          <!-- Title & Overview -->
+          <div class="border-b border-border-subtle pb-8">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary-container/10 text-primary-container font-label-badge text-xs font-bold mb-3 hero-entrance-2">
+              <span class="material-symbols-outlined text-sm">home_pin</span>
+              <span>Puro Pakualaman &amp; Stasiun Lempuyangan</span>
+            </div>
+            <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed hero-entrance-4">
+              "Berupa rumah pribadi dengan fasilitas lengkap yang berlokasi sangat strategis di pusat Kota Yogyakarta. Omah Pakualaman adalah pilihan Homestay dekat Malioboro, Homestay Jogja dekat pusat kota, dan Homestay keluarga di Jogja yang cocok untuk liburan keluarga, rombongan, maupun perjalanan bisnis. Dengan suasana hangat layaknya di rumah sendiri dan fasilitas lengkap, properti ini menjadi pilihan ideal untuk pengalaman menginap yang nyaman, privasi terjaga, dan dekat dengan destinasi utama Jogja."
+            </p>
+
+            <!-- Quick Spec Highlights -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
+              <div class="bg-surface-container-low p-4 rounded-2xl border border-border-subtle flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-2xl">king_bed</span>
+                <div>
+                  <span class="font-headline-md text-headline-md text-on-surface font-bold block">3 Kamar</span>
+                  <span class="font-body-sm text-xs text-on-surface-variant">Tidur AC</span>
+                </div>
+              </div>
+              <div class="bg-surface-container-low p-4 rounded-2xl border border-border-subtle flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-2xl">bathtub</span>
+                <div>
+                  <span class="font-headline-md text-headline-md text-on-surface font-bold block">3 Kamar Mandi</span>
+                  <span class="font-body-sm text-xs text-on-surface-variant">Water Heater</span>
+                </div>
+              </div>
+              <div class="bg-surface-container-low p-4 rounded-2xl border border-border-subtle flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-2xl">pool</span>
+                <div>
+                  <span class="font-headline-md text-headline-md text-on-surface font-bold block">Private Pool</span>
+                  <span class="font-body-sm text-xs text-on-surface-variant">Mini Pool &amp; Rooftop</span>
+                </div>
+              </div>
+              <div class="bg-surface-container-low p-4 rounded-2xl border border-border-subtle flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-2xl">directions_car</span>
+                <div>
+                  <span class="font-headline-md text-headline-md text-on-surface font-bold block">Carport</span>
+                  <span class="font-body-sm text-xs text-on-surface-variant">Muat 2 Mobil</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Rincian Fasilitas -->
+          <div class="border-b border-border-subtle pb-8">
+            <h2 class="font-headline-xl text-headline-xl-mobile lg:text-headline-xl text-on-surface font-bold tracking-tight mb-6">
+              Rincian Fasilitas Omah Pakualaman
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+              <!-- Kamar Tidur & Mandi -->
+              <div class="bg-surface-container-lowest p-6 rounded-2xl border border-border-subtle shadow-sm flex flex-col gap-3">
+                <div class="flex items-center gap-3 text-primary font-bold">
+                  <span class="material-symbols-outlined text-2xl">bed</span>
+                  <h3 class="font-headline-lg text-headline-lg text-on-surface">Kamar Tidur &amp; Kamar Mandi</h3>
+                </div>
+                <ul class="space-y-2 font-body-md text-on-surface-variant">
+                  <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-1">check_circle</span> <span><strong>Kamar Tidur:</strong> 3 kamar tidur ber-AC yang nyaman dan sejuk.</span></li>
+                  <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-1">check_circle</span> <span><strong>Kamar Mandi:</strong> 3 kamar mandi dengan fasilitas water heater (2 kamar mandi di dalam kamar / en-suite dan 1 kamar mandi luar).</span></li>
+                </ul>
+              </div>
+
+              <!-- Area Bersantai & Hiburan -->
+              <div class="bg-surface-container-lowest p-6 rounded-2xl border border-border-subtle shadow-sm flex flex-col gap-3">
+                <div class="flex items-center gap-3 text-primary font-bold">
+                  <span class="material-symbols-outlined text-2xl">deck</span>
+                  <h3 class="font-headline-lg text-headline-lg text-on-surface">Area Bersantai &amp; Hiburan</h3>
+                </div>
+                <ul class="space-y-2 font-body-md text-on-surface-variant">
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Kolam renang pribadi (private mini pool).</span></li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Area rooftop yang santai.</span></li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Ruang tamu dan ruang keluarga yang luas.</span></li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Smart TV / Google TV 50 inci.</span></li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Fasilitas karaoke lengkap.</span></li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Koneksi WiFi gratis.</span></li>
+                </ul>
+              </div>
+
+              <!-- Dapur & Ruang Makan -->
+              <div class="bg-surface-container-lowest p-6 rounded-2xl border border-border-subtle shadow-sm flex flex-col gap-3">
+                <div class="flex items-center gap-3 text-primary font-bold">
+                  <span class="material-symbols-outlined text-2xl">soup_kitchen</span>
+                  <h3 class="font-headline-lg text-headline-lg text-on-surface">Dapur &amp; Ruang Makan</h3>
+                </div>
+                <ul class="space-y-2 font-body-md text-on-surface-variant">
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Peralatan masak dan perlengkapan makan lengkap.</span></li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Kulkas, rice cooker (magicom), dan dispenser.</span></li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Perlengkapan panggangan untuk BBQ.</span></li>
+                </ul>
+              </div>
+
+              <!-- Fasilitas Tambahan -->
+              <div class="bg-surface-container-lowest p-6 rounded-2xl border border-border-subtle shadow-sm flex flex-col gap-3">
+                <div class="flex items-center gap-3 text-primary font-bold">
+                  <span class="material-symbols-outlined text-2xl">sanitizer</span>
+                  <h3 class="font-headline-lg text-headline-lg text-on-surface">Fasilitas Tambahan &amp; Kenyamanan</h3>
+                </div>
+                <ul class="space-y-2 font-body-md text-on-surface-variant">
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Mesin cuci dan setrika.</span></li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Handuk, sabun, dan sampo.</span></li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Welcome amenities (kopi, teh, dan gula gratis).</span></li>
+                  <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">check_circle</span> <span>Carport (area parkir yang muat hingga 2 mobil).</span></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Section: Informasi Alamat & Lokasi Strategis -->
+          <div class="border-b border-border-subtle pb-8">
+            <h2 class="font-headline-xl text-headline-xl-mobile lg:text-headline-xl text-on-surface font-bold tracking-tight mb-4">
+              Informasi Alamat &amp; Lokasi Strategis
+            </h2>
+
+            <!-- Alamat Lengkap Card -->
+            <div class="bg-surface-container-low p-6 rounded-2xl border border-primary-container/20 flex items-start gap-4 mb-6">
+              <span class="material-symbols-outlined text-primary-container text-2xl mt-1 shrink-0">pin_drop</span>
+              <div>
+                <h3 class="font-headline-md text-headline-md text-on-surface font-bold mb-1">Alamat Lengkap:</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Jl. Suryopranoto No.68, Gunungketur, Pakualaman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55111
+                </p>
+              </div>
+            </div>
+
+            <!-- Distance list grid -->
+            <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-4">Lokasi Sangat Strategis &amp; Jarak Destinasi Terdekat:</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-surface-container-lowest p-4 rounded-xl border border-border-subtle flex items-center justify-between">
+                <span class="font-body-md text-body-md text-on-surface font-semibold">Puro Pakualaman</span>
+                <span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-headline-md text-xs font-bold">± 200 m</span>
+              </div>
+              <div class="bg-surface-container-lowest p-4 rounded-xl border border-border-subtle flex items-center justify-between">
+                <span class="font-body-md text-body-md text-on-surface font-semibold">Stadion Mandala Krida</span>
+                <span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-headline-md text-xs font-bold">± 500 m</span>
+              </div>
+              <div class="bg-surface-container-lowest p-4 rounded-xl border border-border-subtle flex items-center justify-between">
+                <span class="font-body-md text-body-md text-on-surface font-semibold">Stasiun Lempuyangan</span>
+                <span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-headline-md text-xs font-bold">± 900 m</span>
+              </div>
+              <div class="bg-surface-container-lowest p-4 rounded-xl border border-border-subtle flex items-center justify-between">
+                <span class="font-body-md text-body-md text-on-surface font-semibold">Malioboro &amp; Pasar Beringharjo</span>
+                <span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-headline-md text-xs font-bold">± 1 km</span>
+              </div>
+              <div class="bg-surface-container-lowest p-4 rounded-xl border border-border-subtle flex items-center justify-between">
+                <span class="font-body-md text-body-md text-on-surface font-semibold">Taman Pintar Yogyakarta</span>
+                <span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-headline-md text-xs font-bold">1,2 km</span>
+              </div>
+              <div class="bg-surface-container-lowest p-4 rounded-xl border border-border-subtle flex items-center justify-between">
+                <span class="font-body-md text-body-md text-on-surface font-semibold">RS Puri Nirmala &amp; Resto/Kafe</span>
+                <span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-headline-md text-xs font-bold">± 320 m</span>
+              </div>
+            </div>
+
+            <!-- Embed Map -->
+            <div class="w-full h-80 rounded-2xl overflow-hidden mt-6 border border-border-subtle shadow-sm bg-surface-muted">
+              <iframe title="Map Omah Pakualaman"
+                class="w-full h-full border-0" loading="lazy" allowfullscreen
+                src="https://maps.google.com/maps?q=Jl.+Suryopranoto+No.68,+Gunungketur,+Pakualaman,+Kota+Yogyakarta&t=&z=16&ie=UTF8&iwloc=&output=embed">
+              </iframe>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Sticky Container with Pricing & Video (4 cols) -->
+        <div class="lg:col-span-4 sticky top-24 flex flex-col gap-6">
+
+          <!-- Kotak Harga / Booking Widget -->
+          <div class="bg-surface-container-lowest p-8 rounded-3xl border border-border-subtle shadow-xl flex flex-col gap-6">
+<div>
+            <span class="font-body-sm text-body-sm text-on-surface-variant font-medium block mb-1">Harga Sewa Per Malam</span>
+            <div class="flex items-baseline gap-2">
+              <span class="font-headline-hero text-headline-hero-mobile text-primary-container font-extrabold">Rp 1.300.000</span>
+              <span class="font-body-md text-body-md text-on-surface-variant">/ malam</span>
+            </div>
+            <span class="inline-block mt-2 px-3 py-1 rounded-full bg-whatsapp-green/10 text-whatsapp-green font-body-sm text-xs font-bold">
+              ✓ Garansi Harga Jujur &amp; Privat
+            </span>
+          </div>
+
+          <div class="space-y-3 pt-4 border-t border-border-subtle font-body-sm text-body-sm text-on-surface-variant">
+            <div class="flex items-center justify-between">
+              <span>Kapasitas Rombongan:</span>
+              <strong class="text-on-surface font-bold">6 Orang</strong>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Check-in / Check-out:</span>
+              <strong class="text-on-surface font-bold">14.00 / 12.00 WIB</strong>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Fasilitas Unggulan:</span>
+              <strong class="text-on-surface font-bold">Private Pool &amp; Rooftop</strong>
+            </div>
+          </div>
+
+          <!-- Main Booking CTA -->
+          <a id="btn-pesan-omah-pakualaman"
+            href="https://wa.me/6281229605040?text=Halo%20Admin%2C%20saya%20ingin%20reservasi%20Omah%20Pakualaman%20(Rp1.300.000%2Fmalam)"
+            target="_blank" rel="noopener noreferrer"
+            class="w-full inline-flex items-center justify-center gap-3 bg-whatsapp-green hover:opacity-90 text-on-primary font-headline-md text-headline-md px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all">
+            <span class="material-symbols-outlined text-2xl">chat</span>
+            <span>Pesan Unit Ini via WA</span>
+          </a>
+
+          <!-- Payment Guarantee Note -->
+          <div class="bg-error-container/60 p-4 rounded-xl text-center text-on-error-container font-body-sm text-xs leading-relaxed border border-error/20">
+            🔒 <strong>Transaksi Aman:</strong> Pembayaran HANYA ke rekening a/n <strong>Elvina Dewi</strong>.
+          </div>
+          </div>
+
+          <!-- Video Preview Tour Box (Vertical TikTok / Reels Ratio) -->
+          <div class="bg-surface-container-lowest p-5 sm:p-6 rounded-3xl border border-border-subtle shadow-xl flex flex-col gap-4 overflow-hidden">
+            <div class="flex items-center gap-2 text-on-surface font-bold font-headline-md text-base">
+              <span class="material-symbols-outlined text-primary-container text-2xl">play_circle</span>
+              <span>Video Tour</span>
+            </div>
+            <div class="relative w-full max-w-[280px] sm:max-w-[300px] mx-auto rounded-2xl overflow-hidden bg-black shadow-lg border border-border-subtle" style="aspect-ratio: 9 / 16;">
+              <video class="w-full h-full object-cover" controls preload="metadata" playsinline>
+                <source src="assets/Omah Pakualaman/Video.mp4" type="video/mp4">
+                Browser Anda tidak mendukung pemutar video.
+              </video>
+            </div>
+            <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed text-center">
+              📱 Tonton video tur vertikal singkat untuk melihat suasana asli dan fasilitas unit.
+            </p>
+
+            <div class="rounded-2xl border border-red-300 bg-red-50/90 p-4 text-left shadow-sm">
+              <p class="text-center text-[11px] font-black uppercase tracking-[0.14em] text-red-700 mb-3">Informasi Penting!</p>
+              <p class="text-[11px] leading-relaxed text-red-900 font-medium">
+                Kepada seluruh calon customer/tamu yang akan pesan homestay di <span class="font-bold">@homestayinjogja</span><br>
+                Hati-hati dengan modus yang mengatasnamakan Admin <span class="font-bold">@homestayinjogja</span><br><br>
+                Saat ini Homestay yang kami kelola hanya <span class="font-bold">Omah Kadipaten, Griya Pojok, Omah Pakualaman, Girly Homestay</span><br><br>
+                Kami tidak pernah menawarkan secara tiba-tiba kepada customer/tamu melalui pesan DM TikTok, Instagram, dan WhatsApp.<br><br>
+                <span class="font-bold">Transaksi Pembayaran hanya ke rekening a/n Elvina Dewi</span><br><br>
+                <span class="font-bold uppercase">Kontak Admin</span><br>
+                0812-2960-504<br>
+                0812-2700-193<br>
+                0813-6665-475
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ REVIEW GOOGLE MAPS -->
+    <section class="w-full py-16 lg:py-24 bg-surface-warm">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="mb-8">
+          <p class="font-body-sm text-body-sm text-on-surface-variant uppercase tracking-[0.16em] font-bold mb-3">Ulasan Tamu</p>
+          <h2 class="font-headline-xl text-headline-xl-mobile lg:text-[40px] lg:leading-[48px] text-on-surface font-extrabold tracking-tight">Review Google Maps Omah Pakualaman</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2tOUFprWklkV0p2ZFdkbVpXYzJkbEZLV2t0MWVYYxAB!2m1!1s0x0:0x51adc764c0fd84ac!3m1!1s2@1:CAIQACodChtycF9oOkNPZkZIdWJvdWdmZWc2dlFKWkt1eXc||?entry=tts&g_ep=EgoyMDI2MTAwNy4wIPu8ASoASAFQAw==&skid=dd99b6d2-0859-4038-897e-fc787feb968f" target="_blank" rel="noopener noreferrer" class="group block">
+            <div class="bg-surface-container-lowest rounded-3xl border border-border-subtle p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] h-full transition-transform duration-300 group-hover:-translate-y-1">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-body-sm text-[10px] font-bold uppercase tracking-wide">Omah Pakualaman</span>
+                <div class="flex items-center gap-1 text-[#0EA371]" aria-label="5 bintang">
+                  <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">star</span>
+                </div>
+              </div>
+              <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-5">"2 bulan lalu Nginep disini 3 hari 2 malam, homestay nyaman , fasilitas ada mini poolnya, rooftop, dikasih kopi gula sabun shampoo dan handuk , sama dgn hotel , Bawa keluarga ... semua happy, terimakasih omah pakualaman"</p>
+              <div class="flex items-center gap-3 pt-4 border-t border-border-subtle">
+                <div class="w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-xs font-bold">R</div>
+                <div>
+                  <p class="font-headline-md text-headline-md text-on-surface font-bold">Rostika</p>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Review Google Maps</p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT21wcVptbENUVTlRWkVkNGRXMHhja3B1YmxoUk1WRRAB!2m1!1s0x0:0x51adc764c0fd84ac!3m1!1s2@1:CAIQACodChtycF9oOmpqZmlCTU9QZEd4dW0xckpublhRMVE||?entry=tts&g_ep=EgoyMDI2MTAwNy4wIPu8ASoASAFQAw==&skid=1e732d37-ea25-4ee6-8232-8dd1438e2c26" target="_blank" rel="noopener noreferrer" class="group block">
+            <div class="bg-surface-container-lowest rounded-3xl border border-border-subtle p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)] h-full transition-transform duration-300 group-hover:-translate-y-1">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-body-sm text-[10px] font-bold uppercase tracking-wide">Omah Pakualaman</span>
+                <div class="flex items-center gap-1 text-[#0EA371]" aria-label="5 bintang">
+                  <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">star</span>
+                </div>
+              </div>
+              <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-5">"That was so peak! Rumahan yang cozy banget, nyaman cocok lah buat liburan, deket tempat ibadah, ada mini pool, lukisan aesthetic dsb."</p>
+              <div class="flex items-center gap-3 pt-4 border-t border-border-subtle">
+                <div class="w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-xs font-bold">RP</div>
+                <div>
+                  <p class="font-headline-md text-headline-md text-on-surface font-bold">Rendy Putra</p>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Review Google Maps</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+        <!-- ============================================================ CTA SECTION -->
+    <section id="section-cta" class="relative w-full py-16 lg:py-24 overflow-hidden text-white">
+      <!-- Background Image with CTA.webp -->
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/Other/CTA.webp');"></div>
+      <!-- Semi-Transparent Dark Navy Overlay -->
+      <div class="absolute inset-0 bg-[#0B1B32]/25" style="background-color: rgba(11, 27, 50, 0.25);"></div>
+
+      <div class="relative max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center text-center z-10">
+        <h2 class="font-headline-hero text-headline-hero-mobile lg:text-headline-xl text-white font-extrabold tracking-tight mb-4 max-w-3xl drop-shadow-md">
+          Rencanakan Liburan Tak Terlupakan di Jogja Hari Ini!
+        </h2>
+        <p class="font-body-lg text-body-lg text-white/90 max-w-xl mx-auto mb-10 leading-relaxed drop-shadow-sm">
+          Kami siap membantu Anda menyesuaikan kebutuhan menginap dengan anggaran yang Anda miliki. Jangan ragu untuk menghubungi kami.
+        </p>
+        <a id="btn-pesan-sekarang"
+          class="inline-flex items-center gap-3 bg-surface-container-lowest hover:bg-surface-warm text-primary-container font-headline-md text-headline-md px-8 py-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
+          href="https://wa.me/6281229605040" rel="noopener noreferrer" target="_blank">
+          <span class="material-symbols-outlined text-xl">chat</span>
+          <span>Pesan Sekarang</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ============================================================ FOOTER -->
+<footer id="footer" class="relative w-full overflow-hidden text-white pt-space-xl pb-space-lg">
+  <!-- Background Image with 50% Navy Overlay -->
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/Other/footer.webp')"></div>
+  <div class="absolute inset-0 bg-[#0B1B32]/75" style="background-color: rgba(11, 27, 50, 0.75);"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-12 z-10">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-xl">
+
+      <!-- About -->
+      <div class="flex flex-col gap-space-sm">
+        <div class="flex items-center gap-space-sm">
+          <div class="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-white/10 border border-white/20">
+            <img alt="Homestay in Jogja Logo" class="w-full h-full object-cover"
+              src="assets/Logo/Logo Utama.webp"/>
+          </div>
+          <span class="font-headline-md text-headline-md text-white font-bold">Homestay in Jogja</span>
+        </div>
+        <p class="font-body-md text-body-md text-slate-200 leading-relaxed">
+          Menyediakan hunian nyaman, strategis, dan aman untuk melengkapi pengalaman liburan keluarga Anda di Yogyakarta.
+        </p>
+        <div class="flex items-start gap-2 font-body-sm text-body-sm text-slate-200">
+          <span class="material-symbols-outlined text-primary-fixed-dim text-lg mt-0.5">location_on</span>
+          <span>Daerah Istimewa Yogyakarta</span>
+        </div>
+        <!-- Security Warning -->
+        <div class="mt-2 bg-error-container rounded-xl p-3 font-body-sm text-body-sm leading-relaxed border border-error/20">
+          <span class="text-on-error-container">
+            🚨 <strong>INFO PENTING:</strong> Transaksi pembayaran HANYA ke rekening a/n <strong>Elvina Dewi</strong>. Hati-hati penipuan!
+          </span>
+        </div>
+      </div>
+
+      <!-- Nav Links -->
+      <div class="flex flex-col gap-space-sm">
+        <span class="font-headline-md text-headline-md text-white font-bold">Menu Navigasi</span>
+        <div class="flex flex-col gap-2">
+          <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="index.html">Home</a>
+          <a class="font-body-md text-body-md text-primary-fixed-dim font-bold transition-colors" href="homestay.html">Homestay</a>
+          <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="fasilitas.html">Fasilitas</a>
+          <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="faq.html">FAQ</a>
+          <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="kontak.html">Kontak</a>
+        </div>
+      </div>
+
+      <!-- Admin Contacts -->
+      <div class="flex flex-col gap-space-sm">
+        <span class="font-headline-md text-headline-md text-white font-bold">Hubungi Admin</span>
+        <div class="flex flex-col gap-4 font-body-md text-body-md text-slate-200">
+          <div>
+            <p class="font-body-sm text-body-sm text-slate-200 font-bold uppercase tracking-wider mb-1">Admin 1</p>
+            <a class="inline-flex items-center gap-2 hover:text-white transition-colors font-semibold"
+              href="https://wa.me/6281229605040" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined text-[#25D366] text-lg">chat</span>
+              <span>0812-2960-504</span>
+            </a>
+          </div>
+          <div>
+            <p class="font-body-sm text-body-sm text-slate-200 font-bold uppercase tracking-wider mb-1">Admin 2</p>
+            <a class="inline-flex items-center gap-2 hover:text-white transition-colors font-semibold"
+              href="https://wa.me/6281227001930" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined text-[#25D366] text-lg">chat</span>
+              <span>0812-2700-193</span>
+            </a>
+          </div>
+          <div>
+            <p class="font-body-sm text-body-sm text-slate-200 font-bold uppercase tracking-wider mb-1">Admin 3</p>
+            <a class="inline-flex items-center gap-2 hover:text-white transition-colors font-semibold"
+              href="https://wa.me/6281366654750" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined text-[#25D366] text-lg">chat</span>
+              <span>0813-6665-475</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social -->
+      <div class="flex flex-col gap-space-sm">
+        <span class="font-headline-md text-headline-md text-white font-bold">Ikuti Kami</span>
+        <p class="font-body-sm text-body-sm text-slate-200">Dapatkan update promo dan homestay estetik Jogja terkini.</p>
+        <div class="flex items-center gap-3 pt-1 flex-wrap">
+          <a class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center hover:bg-primary-container hover:text-on-primary transition-all shadow-sm" href="https://www.tiktok.com/@homestayinjogja?_r=1&_t=ZS-93p2UqU174R" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M16.5 3c.7 1.8 2 3.1 3.9 3.5v2.6c-1.2 0-2.4-.3-3.5-.9v7.4a5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 8.6-3.9V9.3a7.2 7.2 0 0 1-5.4 2.1V8.7c2.1 0 4.1-.9 5.4-2.4V3Z"/></svg>
+          </a>
+          <a class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center hover:bg-primary-container hover:text-on-primary transition-all shadow-sm" href="https://www.instagram.com/homestayinjogja?cplk=MWFldHh6OHhpaTR6Zw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-[1.8]" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </a>
+          <a class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center hover:bg-primary-container hover:text-on-primary transition-all shadow-sm" href="https://www.facebook.com/share/1Djcn7642B/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M13.5 21v-8h2.5l.4-3h-2.9V7.3c0-.9.3-1.5 1.6-1.5H16V3.1c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4v2.3H7.5v3h2.4v8h3.6Z"/></svg>
+          </a>
+          <a class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center hover:bg-primary-container hover:text-on-primary transition-all shadow-sm" href="https://youtube.com/@homestayinjogja?si=0FumsEMkMFedtPAf" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M21.6 7.5a2.9 2.9 0 0 0-2-2.1C17.9 5 12 5 12 5s-5.9 0-7.6.4a2.9 2.9 0 0 0-2 2.1A30.4 30.4 0 0 0 2 12a30.4 30.4 0 0 0 .4 4.5 2.9 2.9 0 0 0 2 2.1C6.1 19 12 19 12 19s5.9 0 7.6-.4a2.9 2.9 0 0 0 2-2.1A30.4 30.4 0 0 0 22 12a30.4 30.4 0 0 0-.4-4.5ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
+          </a>
+          <a class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center hover:bg-primary-container hover:text-on-primary transition-all shadow-sm" href="https://www.threads.com/@homestayinjogja?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+            <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M15.8 4.5c-1.3-.6-2.7-.9-4.1-.9-3.7 0-6.6 2.3-6.6 5.7 0 2.2 1.3 3.6 3.5 4.4 1.3.5 2.7.6 4 .3-.4 1.3-1.6 2.3-3.4 2.7-1.1.2-2.3.1-3.3-.4-.5-.2-.9-.5-1.3-.9l-1.1 1.4c.7.8 1.7 1.4 2.9 1.8 1.9.7 4 .6 5.7-.3 1.5-.8 2.6-2.2 3-4.2.3-1.8.1-3.4-.8-4.7.9-.4 1.6-1 2.2-1.8l-1.5-1.1c-.8 1-1.8 1.6-3 1.9ZM14 11.6c-.8.5-1.8.7-2.7.6-1.2-.1-2.1-.7-2.3-1.7-.2-1.4 1-2.3 3-2.5 1.2-.1 2.4.1 3.4.8-.4 1.2-.7 2.1-1.4 2.8Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="pt-space-lg border-t border-white/15 flex flex-col sm:flex-row items-center justify-center gap-2 font-body-sm text-body-sm text-slate-200 text-center">
+      <p>Copyright &copy; 2026 Homestay in Jogja | Powered by <span class="text-primary-fixed-dim font-bold">Homestay in Jogja</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp Button -->
+<div class="fixed bottom-6 right-6 z-50">
+  <a id="btn-whatsapp-float"
+    class="flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-[0_10px_25px_rgba(37,211,102,0.45)] hover:scale-110 active:scale-95 transition-all"
+    href="https://wa.me/6281229605040" rel="noopener noreferrer" target="_blank" aria-label="Chat WhatsApp Admin">
+    <svg class="w-7 h-7 fill-current text-white" viewBox="0 0 24 24">
+      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.762.459 3.48 1.332 5.001l-1.416 5.169 5.306-1.388c1.464.798 3.114 1.218 4.766 1.218 5.508 0 9.99-4.478 9.99-9.984 0-2.667-1.039-5.174-2.927-7.061s-4.394-2.939-7.061-2.939zm5.882 14.156c-.244.689-1.228 1.263-1.996 1.428-.529.112-1.22.2-3.545-.765-2.973-1.233-4.887-4.254-5.035-4.451-.148-.197-1.206-1.603-1.206-3.059 0-1.455.762-2.17 1.033-2.466.271-.296.591-.37.788-.37.197 0 .394.002.566.01.183.008.428-.069.67.511.246.591.838 2.045.912 2.193.074.148.123.321.025.517-.099.197-.148.321-.296.493-.148.173-.311.386-.444.519-.148.148-.302.311-.13.606.173.296.767 1.266 1.647 2.051 1.13.1 2.083 1.314 2.379 1.462.296.148.468.123.641-.074.173-.197.74-0.863.937-1.159.197-.296.394-.246.665-.148.271.099 1.725.813 2.021.961.296.148.493.222.566.345.074.123.074.714-.17 1.403z"/>
+    </svg>
+  </a>
+</div>
+
+  <!-- Mobile Menu & Smooth Scroll Script -->
+  <script>
+    (function () {
+      var toggleBtn = document.getElementById('btn-mobile-menu-toggle');
+      var mobileMenu = document.getElementById('mobile-menu');
+      var menuIcon = document.getElementById('mobile-menu-icon');
+      if (toggleBtn && mobileMenu) {
+        toggleBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isClosed = mobileMenu.classList.contains('hidden');
+          if (isClosed) {
+            mobileMenu.classList.remove('hidden');
+            if (menuIcon) menuIcon.textContent = 'close';
+          } else {
+            mobileMenu.classList.add('hidden');
+            if (menuIcon) menuIcon.textContent = 'menu';
+          }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (e) {
+          if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            if (menuIcon) menuIcon.textContent = 'menu';
+          }
+        });
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            if (menuIcon) menuIcon.textContent = 'menu';
+          }
+        });
+      }
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var targetId = this.getAttribute('href');
+          if (targetId && targetId !== '#') {
+            var targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              // Also close mobile menu if an internal link was clicked
+              if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                if (menuIcon) menuIcon.textContent = 'menu';
+              }
+            }
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
