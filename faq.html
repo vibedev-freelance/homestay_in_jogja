@@ -188,6 +188,48 @@
  </style>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+<script>
+(function () {
+  const audio = new Audio('assets/Sound/backsound.mpeg');
+  audio.loop = true;
+  audio.volume = 0.35;
+  audio.preload = 'auto';
+  audio.playsInline = true;
+
+  const stateKey = 'homestay-in-jogja-audio-playing';
+
+  const markPlaying = () => {
+    try {
+      sessionStorage.setItem(stateKey, '1');
+    } catch (error) {}
+  };
+
+  const stopMarking = () => {
+    try {
+      sessionStorage.removeItem(stateKey);
+    } catch (error) {}
+  };
+
+  const tryPlay = async () => {
+    try {
+      await audio.play();
+      markPlaying();
+    } catch (error) {
+      stopMarking();
+    }
+  };
+
+  const shouldResume = (sessionStorage.getItem(stateKey) === '1');
+
+  if (shouldResume) {
+    window.addEventListener('load', tryPlay, { once: true });
+  }
+
+  ['pointerdown', 'touchstart', 'keydown'].forEach((eventName) => {
+    document.addEventListener(eventName, tryPlay, { once: true });
+  });
+})();
+</script>
 
 <!-- ============================================================ HEADER -->
 <header class="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 pointer-events-none">
@@ -492,24 +534,6 @@
        Tentu saja! Homestay kami sangat ramah keluarga, bersih, dan nyaman untuk anak-anak maupun lansia. Kolam renang juga dilengkapi pengaman/kanopi di beberapa unit demi keamanan bermain anak.
       </div>
      </div>
-    </div>
-
-    <!-- Help Box -->
-    <div class="mt-8 bg-surface-container-low p-6 rounded-2xl border border-primary-container/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-     <div class="flex items-center gap-4">
-      <div class="w-10 h-10 rounded-full bg-whatsapp-green text-on-primary flex items-center justify-center flex-shrink-0">
-       <span class="material-symbols-outlined text-xl">headset_mic</span>
-      </div>
-      <div>
-       <h3 class="font-headline-md text-headline-md text-on-surface font-bold">Masih punya pertanyaan lain?</h3>
-       <p class="font-body-sm text-body-sm text-on-surface-variant">Tim admin kami siap membantu merencanakan liburan Anda di Jogja.</p>
-      </div>
-     </div>
-     <a href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Home%20-%20Homestay%20in%20Jogja%20%28https%3A//homestayinjogja.com/%29.%20Terima%20kasih.%0A%0Ahttps%3A//homestayinjogja.com/assets/Logo/Logo%2520Utama.webp" target="_blank" rel="noopener noreferrer"
-      class="inline-flex items-center gap-2 bg-whatsapp-green hover:opacity-90 text-on-primary px-5 py-2.5 rounded-full font-headline-md text-headline-md font-bold shadow-md transition-all flex-shrink-0">
-      <span class="material-symbols-outlined text-lg">chat</span>
-      <span>Tanya Admin WA</span>
-     </a>
     </div>
 
    </div>
