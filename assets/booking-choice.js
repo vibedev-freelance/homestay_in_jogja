@@ -13,8 +13,30 @@
  }
 
  const bookingPlatforms = [
-  { name: 'Tiket.com', url: 'https://www.tiket.com/' },
-  { name: 'Airbnb', url: 'https://www.airbnb.com/' }
+  { name: 'Airbnb', listings: [
+   {
+    name: 'Omah Kadipaten',
+    url: 'https://www.airbnb.co.id/rooms/1684113982771063960?unique_share_id=a0124c15-2271-487f-a27c-b10a4674fef6&viralityEntryPoint=1&s=76'
+   },
+   {
+    name: 'Griya Pojok',
+    url: 'https://www.airbnb.co.id/rooms/1684125429962686068?unique_share_id=54ac0cf9-5778-4ae7-9449-1031394dd44f&viralityEntryPoint=1&s=76'
+   },
+   {
+    name: 'Omah Pakualaman',
+    url: 'https://www.airbnb.co.id/rooms/1710045846866173250?unique_share_id=0a8bedff-6236-4302-b320-dbb46fa9367b&viralityEntryPoint=1&s=76'
+   },
+   {
+    name: 'Girly Homestay',
+    url: 'https://www.airbnb.co.id/rooms/1710049376735412182?unique_share_id=b8eb1940-3b07-4fba-ade1-58528d4cb1a8&viralityEntryPoint=1&s=76'
+   }
+  ] },
+  { name: 'Tiket.com', listings: [
+   { name: 'Omah Kadipaten', url: 'https://app.tiket.com/nAPooJ' },
+   { name: 'Omah Pakualaman', url: 'https://app.tiket.com/ou9L0Y' },
+   { name: 'Griya Pojok', url: 'https://app.tiket.com/AjqSJ4' },
+   { name: 'Girly Homestay', url: 'https://app.tiket.com/jgi9IC' }
+  ] }
  ];
  const dialog = document.createElement('dialog');
  dialog.className = 'booking-choice-dialog';
@@ -46,24 +68,44 @@
  const platforms = dialog.querySelector('[data-booking-platforms]');
  const backButton = dialog.querySelector('.booking-choice__back');
  const closeButton = dialog.querySelector('.booking-choice__close');
+ const headerBookingLink = document.getElementById('btn-reservasi-header');
+ const defaultWhatsAppUrl = headerBookingLink ? headerBookingLink.href : '';
  let previousBodyOverflow = '';
-
- bookingPlatforms.forEach(function (platform) {
-  const link = document.createElement('a');
-  link.className = 'booking-choice__action booking-choice__action--app';
-  link.href = platform.url;
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  link.textContent = platform.name;
-  platforms.appendChild(link);
- });
 
  function showPlatformChoices() {
   title.textContent = 'Pilih Aplikasi Booking';
-  description.textContent = 'Pilih platform untuk melanjutkan pencarian homestay.';
+  description.textContent = 'Pilih aplikasi untuk melihat pilihan unit homestay.';
   methods.hidden = true;
   platforms.hidden = false;
   backButton.hidden = false;
+  backButton.dataset.destination = 'methods';
+  platforms.replaceChildren();
+
+  bookingPlatforms.forEach(function (platform) {
+   const button = document.createElement('button');
+   button.className = 'booking-choice__action booking-choice__action--app';
+   button.type = 'button';
+   button.dataset.bookingPlatform = platform.name;
+   button.textContent = platform.name;
+   platforms.appendChild(button);
+  });
+ }
+
+ function showListingChoices(platform) {
+  title.textContent = 'Pilih Homestay';
+  description.textContent = 'Pilih unit homestay untuk melanjutkan pemesanan melalui ' + platform.name + '.';
+  backButton.dataset.destination = 'platforms';
+  platforms.replaceChildren();
+
+  platform.listings.forEach(function (listing) {
+   const link = document.createElement('a');
+   link.className = 'booking-choice__action booking-choice__action--app';
+   link.href = listing.url;
+   link.target = '_blank';
+   link.rel = 'noopener noreferrer';
+   link.textContent = listing.name;
+   platforms.appendChild(link);
+  });
  }
 
  function showBookingMethods() {
@@ -72,15 +114,15 @@
   methods.hidden = false;
   platforms.hidden = true;
   backButton.hidden = true;
+  delete backButton.dataset.destination;
  }
 
- function openDialog(trigger, choosePlatform) {
-  if (trigger.href) whatsappLink.href = trigger.href;
+ function openDialog(trigger) {
+  whatsappLink.href = trigger.href || defaultWhatsAppUrl;
   showBookingMethods();
   previousBodyOverflow = document.body.style.overflow;
   document.body.style.overflow = 'hidden';
   dialog.showModal();
-  if (choosePlatform) showPlatformChoices();
   closeButton.focus();
  }
 
@@ -96,11 +138,26 @@
   if (mobileMenu) mobileMenu.classList.add('hidden');
   const mobileMenuIcon = document.getElementById('mobile-menu-icon');
   if (mobileMenuIcon) mobileMenuIcon.textContent = 'menu';
-  openDialog(trigger, trigger.matches('[data-booking-app-open]'));
+  openDialog(trigger);
  });
 
  dialog.querySelector('[data-booking-app]').addEventListener('click', showPlatformChoices);
- backButton.addEventListener('click', showBookingMethods);
+ platforms.addEventListener('click', function (event) {
+  const button = event.target.closest('[data-booking-platform]');
+  if (!button) return;
+
+  const selectedPlatform = bookingPlatforms.find(function (platform) {
+   return platform.name === button.dataset.bookingPlatform;
+  });
+  if (selectedPlatform) showListingChoices(selectedPlatform);
+ });
+ backButton.addEventListener('click', function () {
+  if (backButton.dataset.destination === 'platforms') {
+   showPlatformChoices();
+  } else {
+   showBookingMethods();
+  }
+ });
 
  function closeDialog() {
   dialog.close();
