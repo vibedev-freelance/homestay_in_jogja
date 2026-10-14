@@ -3,14 +3,14 @@
 <head>
  <meta charset="utf-8"/>
  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
- <link rel="icon" type="image/webp" href="assets/Logo/Logo%20Utama.webp"/>
- <title>Fasilitas Homestay nyaman di Jogja & Homestay keluarga — Homestay in Jogja</title>
- <meta name="description" content="Fasilitas Homestay nyaman di Jogja untuk liburan, Homestay keluarga di Jogja, Homestay dekat Malioboro, Homestay dekat Kraton Jogja, dan Homestay rombongan Jogja murah dengan fasilitas lengkap."/>
+ <link rel="icon" type="image/webp" href="../assets/Logo/Logo%20Utama.webp"/>
+ <title>Pilihan Homestay & Sewa 1 Rumah Homestay Jogja | Homestay in Jogja</title>
+ <meta name="description" content="Homestay dekat Malioboro harga terjangkau, Homestay Jogja dekat pusat kota, Homestay rombongan Jogja murah, Sewa homestay harian Jogja dekat Malioboro, dan Homestay keluarga dekat Kraton Yogyakarta tersedia di sini."/>
  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
- <link rel="stylesheet" href="assets/booking-choice.css"/>
+ <link rel="stylesheet" href="../assets/booking-choice.css"/>
  <style>
   html {
    scroll-behavior: smooth;
@@ -31,6 +31,32 @@
   .homestay-card-entrance.is-visible {
    opacity: 1;
    transform: translateY(0) scale(1);
+  }
+
+  .homestay-card-price-row {
+   gap: 0.75rem;
+  }
+
+  @media (max-width: 640px) {
+   .homestay-card-price-row {
+    flex-direction: column;
+    align-items: stretch;
+   }
+
+   .homestay-card-price-group,
+   .homestay-card-actions {
+    width: 100%;
+   }
+
+   .homestay-card-actions {
+    display: flex;
+    flex-direction: column;
+   }
+
+   .homestay-card-actions a {
+    width: 100%;
+    justify-content: center;
+   }
   }
  
    /* Jumbotron Text Entrance Animations */
@@ -173,11 +199,12 @@
    background-repeat: no-repeat !important;
   }
  </style>
+  <link rel="canonical" href="https://homestayinjogja.com/homestay/"/>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
 <script>
 (function () {
-  const audio = new Audio('assets/Sound/backsound.mpeg');
+  const audio = new Audio('../assets/Sound/backsound.mpeg');
   audio.loop = true;
   audio.volume = 0.35;
   audio.preload = 'auto';
@@ -223,10 +250,10 @@
  <div class="max-w-7xl mx-auto h-16 sm:h-20 px-4 sm:px-8 rounded-full bg-[#1e293b]/85 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.25)] flex items-center justify-between gap-2 sm:gap-4 pointer-events-auto">
 
   <!-- Brand / Logo (Rata Kiri) -->
-  <a class="flex items-center gap-2.5 sm:gap-3 group shrink-0" href="index.html">
+  <a class="flex items-center gap-2.5 sm:gap-3 group shrink-0" href="../">
    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex-shrink-0 bg-white/10 border border-white/20">
     <img alt="Logo Homestay in Jogja" class="w-full h-full object-cover"
-     src="assets/Logo/Logo Utama.webp"/>
+     src="../assets/Logo/Logo Utama.webp"/>
    </div>
    <div class="flex flex-col">
     <span class="text-sm sm:text-headline-md tracking-tight text-white group-hover:text-primary-fixed-dim transition-colors leading-tight font-bold">Homestay in Jogja</span>
@@ -237,16 +264,16 @@
   <!-- Navigation & Action Buttons (Rata Kanan) -->
   <div class="flex items-center gap-2 sm:gap-3 lg:gap-4">
    <nav class="hidden md:flex items-center gap-1">
-    <a id="nav-home" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="index.html">Home</a>
-    <a id="nav-homestay" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="homestay.html">Homestay</a>
-    <a id="nav-fasilitas" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all bg-primary-container text-white font-bold shadow-sm" href="fasilitas.html">Fasilitas</a>
-    <a id="nav-faq" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="faq.html">FAQ</a>
-    <a id="nav-kontak" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="kontak.html">Kontak</a>
+    <a id="nav-home" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="../">Home</a>
+    <a id="nav-homestay" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all bg-primary-container text-white font-bold shadow-sm" href="./">Homestay</a>
+    <a id="nav-fasilitas" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="../fasilitas/">Fasilitas</a>
+    <a id="nav-faq" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="../faq/">FAQ</a>
+    <a id="nav-kontak" class="px-4 py-2 rounded-full font-body-md text-body-md transition-all text-slate-200 hover:bg-white/15 hover:text-white" href="../kontak/">Kontak</a>
    </nav>
 
    <a id="btn-reservasi-header"
     class="hidden sm:inline-flex items-center gap-2 bg-primary-container hover:bg-primary text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-body-md text-body-md font-bold shadow-lg transition-all border border-white/10 shrink-0"
-    href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Home%20-%20Homestay%20in%20Jogja%20%28https%3A//homestayinjogja.com/%29.%20Terima%20kasih.%0A%0Ahttps%3A//homestayinjogja.com/assets/Logo/Logo%2520Utama.webp" rel="noopener noreferrer" target="_blank">
+    href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Home%20-%20Homestay%20in%20Jogja%20%28https%3A//homestayinjogja.com/%29.%20Terima%20kasih.%0A%0Ahttps%3A//homestayinjogja.com/../assets/Logo/Logo%2520Utama.webp" rel="noopener noreferrer" target="_blank">
     <span class="material-symbols-outlined text-base">calendar_month</span>
     <span>Reservasi</span>
    </a>
@@ -263,29 +290,29 @@
  <!-- Mobile Navigation Dropdown Menu -->
  <div id="mobile-menu" class="hidden md:hidden mt-2.5 max-w-7xl mx-auto rounded-3xl bg-[#1e293b]/95 backdrop-blur-2xl border border-white/15 shadow-[0_16px_40px_rgba(0,0,0,0.4)] p-4 pointer-events-auto transition-all duration-300">
   <nav class="flex flex-col gap-1.5">
-   <a id="mobile-nav-home" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="index.html">
+   <a id="mobile-nav-home" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="../">
     <span class="material-symbols-outlined text-xl text-primary-fixed-dim">home</span>
     <span class="font-medium">Home</span>
    </a>
-   <a id="mobile-nav-homestay" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="homestay.html">
+   <a id="mobile-nav-homestay" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all bg-primary-container text-white font-bold shadow-sm" href="./">
     <span class="material-symbols-outlined text-xl text-primary-fixed-dim">apartment</span>
     <span class="font-medium">Homestay</span>
    </a>
-   <a id="mobile-nav-fasilitas" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all bg-primary-container text-white font-bold shadow-sm" href="fasilitas.html">
+   <a id="mobile-nav-fasilitas" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="../fasilitas/">
     <span class="material-symbols-outlined text-xl text-primary-fixed-dim">hotel</span>
     <span class="font-medium">Fasilitas</span>
    </a>
-   <a id="mobile-nav-faq" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="faq.html">
+   <a id="mobile-nav-faq" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="../faq/">
     <span class="material-symbols-outlined text-xl text-primary-fixed-dim">help</span>
     <span class="font-medium">FAQ</span>
    </a>
-   <a id="mobile-nav-kontak" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="kontak.html">
+   <a id="mobile-nav-kontak" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-body-md transition-all text-slate-200 hover:bg-white/10 hover:text-white" href="../kontak/">
     <span class="material-symbols-outlined text-xl text-primary-fixed-dim">call</span>
     <span class="font-medium">Kontak</span>
    </a>
    <div class="pt-3 border-t border-white/10 mt-1 flex flex-col gap-2">
     <a class="flex items-center justify-center gap-2 bg-primary-container hover:bg-primary text-white py-3 rounded-2xl font-body-md font-bold shadow-md transition-all"
-     href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Home%20-%20Homestay%20in%20Jogja%20%28https%3A//homestayinjogja.com/%29.%20Terima%20kasih.%0A%0Ahttps%3A//homestayinjogja.com/assets/Logo/Logo%2520Utama.webp" rel="noopener noreferrer" target="_blank">
+     href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Home%20-%20Homestay%20in%20Jogja%20%28https%3A//homestayinjogja.com/%29.%20Terima%20kasih.%0A%0Ahttps%3A//homestayinjogja.com/../assets/Logo/Logo%2520Utama.webp" rel="noopener noreferrer" target="_blank">
      <span class="material-symbols-outlined text-lg">calendar_month</span>
      <span>Reservasi Sekarang</span>
     </a>
@@ -297,11 +324,11 @@
 <main class="w-full pt-20 bg-surface flex-grow">
  <div class="flex flex-col w-full">
 
-  <!-- ============================================================ HERO / JUDUL -->
+  <!-- ============================================================ PAGE HERO / JUDUL -->
   <section class="relative w-full -mt-20 pt-28 pb-16 lg:pb-20 overflow-hidden bg-surface-container-high">
-   <!-- Background pattern -->
+   <!-- Decorative background -->
    <div class="absolute inset-0 bg-cover bg-center bg-fixed hero-fixed-bg"
-    style="background-image: url('assets/Hero/Tugu Jogja.webp')">
+    style="background-image: url('../assets/Hero/Merapi.webp')">
    </div>
    <!-- Black Semi-Transparent Overlay -->
    <div class="absolute inset-0 bg-black/60"></div>
@@ -309,236 +336,265 @@
    <div class="relative max-w-7xl mx-auto px-6 lg:px-12 z-10 pt-6 lg:pt-10">
     <!-- Breadcrumb -->
     <nav class="flex items-center gap-2 font-body-sm text-body-sm text-white/80 mb-6 hero-entrance-1">
-     <a href="index.html" class="hover:text-white transition-colors">Home</a>
+     <a href="../" class="hover:text-white transition-colors">Home</a>
      <span class="material-symbols-outlined text-sm">chevron_right</span>
-     <span class="text-white font-semibold">Fasilitas</span>
+     <span class="text-white font-semibold">Homestay</span>
     </nav>
 
     <!-- Page Title -->
     <div class="max-w-3xl">
      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm shadow-sm mb-5 hero-entrance-2">
       <span class="w-2 h-2 rounded-full bg-brand-accent-amber animate-pulse"></span>
-      <span class="font-label-badge text-label-badge uppercase tracking-wider text-white font-bold">Layanan Penginapan</span>
+      <span class="font-label-badge text-label-badge uppercase tracking-wider text-white font-bold">Temukan hunian ideal untuk liburan Anda</span>
      </div>
 
      <h1 class="font-headline-hero text-headline-hero-mobile lg:text-headline-hero text-white max-w-4xl tracking-tight mb-5 font-extrabold drop-shadow-sm hero-entrance-3">
-      Fasilitas &amp; Layanan Kami
+      Pilihan Homestay
      </h1>
 
-     <p class="font-body-lg text-body-lg text-slate-200 max-w-3xl leading-relaxed drop-shadow-sm hero-entrance-4">
-      Kami menghadirkan Homestay nyaman di Jogja untuk liburan, Homestay keluarga di Jogja, Homestay dekat Malioboro, Homestay dekat Kraton Jogja, Homestay dekat Alun-Alun Jogja, serta Homestay rombongan Jogja murah dengan fasilitas lengkap yang terasa seperti rumah sendiri.
+     <p class="font-body-lg text-body-lg text-slate-200 max-w-2xl leading-relaxed drop-shadow-sm hero-entrance-4">
+      Jika Anda mencari Homestay dekat Malioboro, Homestay dekat Kraton Jogja, Homestay dekat Alun-Alun Jogja, Homestay dekat Stasiun Tugu Jogja, Homestay keluarga di Jogja, Homestay keluarga dekat Kraton Yogyakarta, Homestay rombongan Jogja murah, atau Homestay Jogja dekat pusat kota, Anda berada di tempat yang tepat. Kami juga menyediakan Sewa 1 rumah homestay Jogja dan Sewa homestay harian Jogja dekat Malioboro dengan fasilitas lengkap dan harga terjangkau.
      </p>
     </div>
    </div>
   </section>
 
-  <!-- ============================================================ DAFTAR FASILITAS UTAMA -->
-  <section id="section-fasilitas-utama" class="w-full py-16 lg:py-24 bg-surface">
+  <!-- ============================================================ CATALOG / DAFTAR UNIT -->
+  <section id="section-katalog" class="w-full py-16 lg:py-24 bg-surface">
    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center">
 
     <!-- Sub-headline -->
-    <div class="flex flex-col items-center mb-14 text-center max-w-3xl">
+    <div class="flex flex-col items-center mb-14 text-center">
      <h2 class="font-headline-xl text-headline-xl-mobile lg:text-headline-xl text-on-surface font-bold tracking-tight">
-      Nikmati Kenyamanan Maksimal
+      Menginaplah Bersama Kami
      </h2>
      <div class="w-16 h-1.5 bg-primary-container rounded-full mt-3 mb-4"></div>
-     <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-      "Setiap unit homestay kami dirancang untuk memenuhi kebutuhan liburan Anda, mulai dari hiburan hingga kepraktisan sehari-hari."
+     <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
+      Pilih salah satu dari unit homestay kami untuk menikmati suasana yang asri, berpadu dengan fasilitas modern yang lengkap untuk pengalaman menginap terbaik.
      </p>
     </div>
 
-    <!-- Grid 6 Fasilitas Utama -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+    <!-- Homestay Cards — 2-column grid, big cards with details -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full mb-12">
 
-     <!-- 1. Kolam Renang Pribadi -->
-     <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-subtle flex flex-col justify-between group">
-      <div>
-       <div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary-container mb-6 group-hover:scale-110 transition-transform">
-        <span class="material-symbols-outlined text-3xl">pool</span>
+     <!-- Card: Omah Pakualaman -->
+     <div id="card-omah-pakualaman" class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group homestay-card-entrance" data-entrance-delay="0">
+      <a href="../product/omah-pakualaman/" class="relative w-full aspect-video overflow-hidden bg-surface-muted block">
+       <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        alt="Omah Pakualaman — Homestay di Yogyakarta"
+        src="../assets/Omah Pakualaman/IMG_3178.JPG.webp"/>
+       <div class="absolute inset-0 bg-gradient-to-t from-on-surface/85 via-on-surface/10 to-transparent"></div>
+       <!-- Location pill -->
+       <div class="absolute bottom-4 left-4 right-4 flex items-center gap-1.5 text-surface-container-lowest">
+        <span class="material-symbols-outlined text-sm text-primary-container">location_on</span>
+        <span class="font-body-sm text-body-sm truncate font-medium">Area Pakualaman, Yogyakarta</span>
        </div>
-       <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-3 group-hover:text-primary transition-colors">
-        Kolam Renang Pribadi
-       </h3>
-       <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-        "Nikmati keseruan bermain air secara privat. Kami menyediakan fasilitas kolam renang (tersedia kolam mini, dewasa, dan anak-anak sesuai unit homestay pilihan Anda) untuk menyegarkan diri setelah seharian berkeliling Jogja."
-       </p>
-      </div>
-      <div class="mt-6 pt-4 border-t border-border-subtle/60 flex items-center gap-2 text-primary font-body-sm font-semibold">
-       <span class="material-symbols-outlined text-base">check_circle</span>
-       <span>Tersedia Privat</span>
+      </a>
+      <div class="p-6 flex flex-col flex-1 justify-between gap-5">
+       <div>
+        <a href="../product/omah-pakualaman/" class="block">
+         <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold group-hover:text-primary transition-colors mb-3">
+          Omah Pakualaman
+         </h3>
+        </a>
+        <!-- Amenities -->
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-on-surface-variant font-body-sm text-body-sm mb-4">
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">group</span><span>6 Orang</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">pool</span><span>Private Pool</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">ac_unit</span><span>AC</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">wifi</span><span>WiFi</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">kitchen</span><span>Dapur Lengkap</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">tv</span><span>Smart TV</span></span>
+        </div>
+       </div>
+       <div class="homestay-card-price-row flex flex-col sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-border-subtle gap-3">
+        <div class="homestay-card-price-group min-w-0">
+         <span class="font-body-sm text-body-sm text-on-surface-variant block mb-0.5">Regular Rate</span>
+         <div class="flex flex-col gap-1">
+         <div class="flex items-baseline gap-1 flex-wrap">
+          <span class="font-headline-xl text-headline-xl-mobile text-primary-container font-extrabold">Rp 1.300.000</span>
+          <span class="font-body-sm text-body-sm text-on-surface-variant font-medium">/ malam</span>
+         </div>
+        </div>
+        </div>
+        <div class="homestay-card-actions flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+         <a href="../product/omah-pakualaman/"
+          class="inline-flex items-center justify-center gap-1 bg-surface-warm hover:bg-surface-container-high text-on-surface px-4 py-2.5 rounded-full font-headline-md text-headline-md font-bold transition-all border border-border-subtle w-full sm:w-auto">
+          <span>Detail</span>
+         </a>
+         <a href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Omah%20Pakualaman%20-%20Homestay%20in%20Jogja%20(https%3A%2F%2Fhomestayinjogja.com%2Fproduct%2Fomah-pakualaman%2F).%20Terima%20kasih."
+          target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-whatsapp-green hover:opacity-90 text-on-primary px-4 py-2.5 rounded-full font-headline-md text-headline-md font-bold shadow-md transition-all w-full sm:w-auto">
+          <span class="material-symbols-outlined text-base">chat</span>
+          <span>Pesan</span>
+         </a>
+        </div>
+       </div>
       </div>
      </div>
 
-     <!-- 2. Ruang Berkumpul & Hiburan Lengkap -->
-     <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-subtle flex flex-col justify-between group">
-      <div>
-       <div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary-container mb-6 group-hover:scale-110 transition-transform">
-        <span class="material-symbols-outlined text-3xl">tv</span>
+     <!-- Card: Girly Homestay -->
+     <div id="card-girly-homestay" class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group homestay-card-entrance" data-entrance-delay="150">
+      <a href="../product/girly-homestay/" class="relative w-full aspect-video overflow-hidden bg-surface-muted block">
+       <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        alt="Girly Homestay — Yogyakarta"
+        src="../assets/Girly Homestay/DSCF1389.webp"/>
+       <div class="absolute inset-0 bg-gradient-to-t from-on-surface/85 via-on-surface/10 to-transparent"></div>
+       <div class="absolute bottom-4 left-4 right-4 flex items-center gap-1.5 text-surface-container-lowest">
+        <span class="material-symbols-outlined text-sm text-primary-container">location_on</span>
+        <span class="font-body-sm text-body-sm truncate font-medium">Argomulyo, Sedayu, Bantul, Yogyakarta</span>
        </div>
-       <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-3 group-hover:text-primary transition-colors">
-        Ruang Berkumpul &amp; Hiburan Lengkap
-       </h3>
-       <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-        "Ciptakan momen hangat bersama keluarga. Homestay kami dilengkapi dengan Smart TV 43 inci, fasilitas Karaoke, serta ruang keluarga dan pendopo yang luas untuk bersantai."
-       </p>
-      </div>
-      <div class="mt-6 pt-4 border-t border-border-subtle/60 flex items-center gap-2 text-primary font-body-sm font-semibold">
-       <span class="material-symbols-outlined text-base">check_circle</span>
-       <span>Smart TV 43" &amp; Karaoke</span>
+      </a>
+      <div class="p-6 flex flex-col flex-1 justify-between gap-5">
+       <div>
+        <a href="../product/girly-homestay/" class="block">
+         <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold group-hover:text-primary transition-colors mb-3">
+          Girly Homestay
+         </h3>
+        </a>
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-on-surface-variant font-body-sm text-body-sm mb-4">
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">group</span><span>10 Orang</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">king_bed</span><span>5 Kamar AC</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">pool</span><span>Private Pool</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">deck</span><span>Pendopo Luas</span></span>
+        </div>
+       </div>
+       <div class="homestay-card-price-row flex flex-col sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-border-subtle gap-3">
+        <div class="homestay-card-price-group min-w-0">
+         <span class="font-body-sm text-body-sm text-on-surface-variant block mb-0.5">Regular Rate</span>
+         <div class="flex items-baseline gap-1 flex-wrap">
+          <span class="font-headline-xl text-headline-xl-mobile text-primary-container font-extrabold">Rp 1.500.000</span>
+          <span class="font-body-sm text-body-sm text-on-surface-variant font-medium">/ malam</span>
+         </div>
+        </div>
+        <div class="homestay-card-actions flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+         <a href="../product/girly-homestay/"
+          class="inline-flex items-center justify-center gap-1 bg-surface-warm hover:bg-surface-container-high text-on-surface px-4 py-2.5 rounded-full font-headline-md text-headline-md font-bold transition-all border border-border-subtle w-full sm:w-auto">
+          <span>Detail</span>
+         </a>
+         <a href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Girly%20Homestay%20-%20Homestay%20in%20Jogja%20(https%3A%2F%2Fhomestayinjogja.com%2Fproduct%2Fgirly-homestay%2F).%20Terima%20kasih."
+          target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-whatsapp-green hover:opacity-90 text-on-primary px-4 py-2.5 rounded-full font-headline-md text-headline-md font-bold shadow-md transition-all w-full sm:w-auto">
+          <span class="material-symbols-outlined text-base">chat</span>
+          <span>Pesan</span>
+         </a>
+        </div>
+       </div>
       </div>
      </div>
 
-     <!-- 3. Kamar Tidur Ber-AC & Nyaman -->
-     <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-subtle flex flex-col justify-between group">
-      <div>
-       <div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary-container mb-6 group-hover:scale-110 transition-transform">
-        <span class="material-symbols-outlined text-3xl">bed</span>
+     <!-- Card: Griya Pojok -->
+     <div id="card-griya-pojok" class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group homestay-card-entrance" data-entrance-delay="450">
+      <a href="../product/griya-pojok/" class="relative w-full aspect-video overflow-hidden bg-surface-muted block">
+       <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        alt="Griya Pojok — Homestay Yogyakarta"
+        src="../assets/Griya Pojok/DSCF1710.webp"/>
+       <div class="absolute inset-0 bg-gradient-to-t from-on-surface/85 via-on-surface/10 to-transparent"></div>
+       <div class="absolute bottom-4 left-4 right-4 flex items-center gap-1.5 text-surface-container-lowest">
+        <span class="material-symbols-outlined text-sm text-primary-container">location_on</span>
+        <span class="font-body-sm text-body-sm truncate font-medium">Kasihan, Bantul (± 5 mnt Malioboro)</span>
        </div>
-       <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-3 group-hover:text-primary transition-colors">
-        Kamar Tidur Ber-AC &amp; Nyaman
-       </h3>
-       <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-        "Beristirahatlah dengan tenang di kamar tidur yang luas dan sejuk. Seluruh kamar dilengkapi AC dan tempat penyimpanan barang, serta kamar mandi yang didukung fasilitas water heater."
-       </p>
-      </div>
-      <div class="mt-6 pt-4 border-t border-border-subtle/60 flex items-center gap-2 text-primary font-body-sm font-semibold">
-       <span class="material-symbols-outlined text-base">check_circle</span>
-       <span>AC &amp; Water Heater</span>
+      </a>
+      <div class="p-6 flex flex-col flex-1 justify-between gap-5">
+       <div>
+        <a href="../product/griya-pojok/" class="block">
+         <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold group-hover:text-primary transition-colors mb-3">
+          Griya Pojok
+         </h3>
+        </a>
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-on-surface-variant font-body-sm text-body-sm mb-4">
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">group</span><span>8 Orang</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">pool</span><span>Private Pool</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">kitchen</span><span>Dapur Lengkap</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">ac_unit</span><span>AC</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">local_parking</span><span>Parkir</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">wifi</span><span>WiFi</span></span>
+        </div>
+       </div>
+       <div class="homestay-card-price-row flex flex-col sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-border-subtle gap-3">
+        <div class="homestay-card-price-group min-w-0">
+         <span class="font-body-sm text-body-sm text-on-surface-variant block mb-0.5">Regular Rate</span>
+         <div class="flex items-baseline gap-1 flex-wrap">
+          <span class="font-headline-xl text-headline-xl-mobile text-primary-container font-extrabold">Rp 1.000.000</span>
+          <span class="font-body-sm text-body-sm text-on-surface-variant font-medium">/ malam</span>
+         </div>
+        </div>
+        <div class="homestay-card-actions flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+         <a href="../product/griya-pojok/"
+          class="inline-flex items-center justify-center gap-1 bg-surface-warm hover:bg-surface-container-high text-on-surface px-4 py-2.5 rounded-full font-headline-md text-headline-md font-bold transition-all border border-border-subtle w-full sm:w-auto">
+          <span>Detail</span>
+         </a>
+         <a href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Griya%20Pojok%20-%20Homestay%20in%20Jogja%20(https%3A%2F%2Fhomestayinjogja.com%2Fproduct%2Fgriya-pojok%2F).%20Terima%20kasih."
+          target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-whatsapp-green hover:opacity-90 text-on-primary px-4 py-2.5 rounded-full font-headline-md text-headline-md font-bold shadow-md transition-all w-full sm:w-auto">
+          <span class="material-symbols-outlined text-base">chat</span>
+          <span>Pesan</span>
+         </a>
+        </div>
+       </div>
       </div>
      </div>
 
-     <!-- 4. Dapur Siap Pakai & Ruang Makan -->
-     <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-subtle flex flex-col justify-between group">
-      <div>
-       <div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary-container mb-6 group-hover:scale-110 transition-transform">
-        <span class="material-symbols-outlined text-3xl">kitchen</span>
+     <!-- Card: Omah Kadipaten -->
+     <div id="card-omah-kadipaten" class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group homestay-card-entrance" data-entrance-delay="300">
+      <a href="../product/omah-kadipaten/" class="relative w-full aspect-video overflow-hidden bg-surface-muted block">
+       <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        alt="Omah Kadipaten — Homestay Kraton Yogyakarta"
+        src="../assets/Omah Kadipaten/IMG_0674.webp"/>
+       <div class="absolute inset-0 bg-gradient-to-t from-on-surface/85 via-on-surface/10 to-transparent"></div>
+       <div class="absolute bottom-4 left-4 right-4 flex items-center gap-1.5 text-surface-container-lowest">
+        <span class="material-symbols-outlined text-sm text-primary-container">location_on</span>
+        <span class="font-body-sm text-body-sm truncate font-medium">Kadipaten, Kraton, Yogyakarta</span>
        </div>
-       <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-3 group-hover:text-primary transition-colors">
-        Dapur Siap Pakai &amp; Ruang Makan
-       </h3>
-       <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-        "Tidak perlu repot mencari makan di luar. Dapur kami dilengkapi dengan peralatan masak, alat makan, kulkas, rice cooker (magicom), dan dispenser. Kami juga menyediakan air galon, teh, kopi, dan gula secara gratis."
-       </p>
-      </div>
-      <div class="mt-6 pt-4 border-t border-border-subtle/60 flex items-center gap-2 text-primary font-body-sm font-semibold">
-       <span class="material-symbols-outlined text-base">check_circle</span>
-       <span>Free Galon, Teh &amp; Kopi</span>
-      </div>
-     </div>
-
-     <!-- 5. Koneksi WiFi Berkecepatan Tinggi -->
-     <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-subtle flex flex-col justify-between group">
-      <div>
-       <div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary-container mb-6 group-hover:scale-110 transition-transform">
-        <span class="material-symbols-outlined text-3xl">wifi</span>
+      </a>
+      <div class="p-6 flex flex-col flex-1 justify-between gap-5">
+       <div>
+        <a href="../product/omah-kadipaten/" class="block">
+         <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold group-hover:text-primary transition-colors mb-3">
+          Omah Kadipaten
+         </h3>
+        </a>
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-on-surface-variant font-body-sm text-body-sm mb-4">
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">group</span><span>6 Orang</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">king_bed</span><span>3 Kamar AC</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">pool</span><span>Private Pool</span></span>
+         <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">outdoor_grill</span><span>BBQ</span></span>
+        </div>
        </div>
-       <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-3 group-hover:text-primary transition-colors">
-        Koneksi WiFi Berkecepatan Tinggi
-       </h3>
-       <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-        "Tetap terhubung dengan dunia luar atau bagikan momen liburan Anda di media sosial tanpa hambatan dengan fasilitas WiFi berkecepatan 20 Mbps di seluruh area homestay."
-       </p>
-      </div>
-      <div class="mt-6 pt-4 border-t border-border-subtle/60 flex items-center gap-2 text-primary font-body-sm font-semibold">
-       <span class="material-symbols-outlined text-base">check_circle</span>
-       <span>20 Mbps Unlimited</span>
-      </div>
-     </div>
-
-     <!-- 6. Pesta Barbeque (BBQ) Keluarga -->
-     <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-border-subtle flex flex-col justify-between group">
-      <div>
-       <div class="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center text-primary-container mb-6 group-hover:scale-110 transition-transform">
-        <span class="material-symbols-outlined text-3xl">outdoor_grill</span>
+       <div class="homestay-card-price-row flex flex-col sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-border-subtle gap-3">
+        <div class="homestay-card-price-group min-w-0">
+         <span class="font-body-sm text-body-sm text-on-surface-variant block mb-0.5">Regular Rate</span>
+         <div class="flex flex-col gap-1">
+         <div class="flex items-baseline gap-1 flex-wrap">
+          <span class="font-headline-xl text-headline-xl-mobile text-primary-container font-extrabold">Rp 1.300.000</span>
+          <span class="font-body-sm text-body-sm text-on-surface-variant font-medium">/ malam</span>
+         </div>
+        </div>
+        </div>
+        <div class="homestay-card-actions flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+         <a href="../product/omah-kadipaten/"
+          class="inline-flex items-center justify-center gap-1 bg-surface-warm hover:bg-surface-container-high text-on-surface px-4 py-2.5 rounded-full font-headline-md text-headline-md font-bold transition-all border border-border-subtle w-full sm:w-auto">
+          <span>Detail</span>
+         </a>
+         <a href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Omah%20Kadipaten%20-%20Homestay%20in%20Jogja%20(https%3A%2F%2Fhomestayinjogja.com%2Fproduct%2Fomah-kadipaten%2F).%20Terima%20kasih."
+          target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-whatsapp-green hover:opacity-90 text-on-primary px-4 py-2.5 rounded-full font-headline-md text-headline-md font-bold shadow-md transition-all w-full sm:w-auto">
+          <span class="material-symbols-outlined text-base">chat</span>
+          <span>Pesan</span>
+         </a>
+        </div>
        </div>
-       <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-3 group-hover:text-primary transition-colors">
-        Pesta Barbeque (BBQ) Keluarga
-       </h3>
-       <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-        "Jadikan malam liburan Anda lebih berkesan dengan mengadakan pesta panggangan. Kami menyediakan alat BBQ yang bisa Anda gunakan secara leluasa di area terbuka homestay."
-       </p>
-      </div>
-      <div class="mt-6 pt-4 border-t border-border-subtle/60 flex items-center gap-2 text-primary font-body-sm font-semibold">
-       <span class="material-symbols-outlined text-base">check_circle</span>
-       <span>Alat Grill Lengkap</span>
       </div>
      </div>
 
     </div>
-
-   </div>
-  </section>
-
-  <!-- ============================================================ LAYANAN TAMBAHAN -->
-  <section id="section-layanan-tambahan" class="w-full py-16 lg:py-24 bg-surface-container-low border-t border-border-subtle">
-   <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center">
-
-    <!-- Header Layanan Tambahan -->
-    <div class="flex flex-col items-center mb-14 text-center max-w-3xl">
-     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-container/10 border border-primary-container/20 shadow-sm mb-4">
-      <span class="material-symbols-outlined text-base text-primary-container">stars</span>
-      <span class="font-label-badge text-label-badge uppercase tracking-wider text-primary-container font-bold">Extra Services</span>
-     </div>
-     <h2 class="font-headline-xl text-headline-xl-mobile lg:text-headline-xl text-on-surface font-bold tracking-tight">
-      Layanan Tambahan untuk Anda
-     </h2>
-     <div class="w-16 h-1.5 bg-primary-container rounded-full mt-3 mb-4"></div>
-     <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-      "Kami memastikan setiap tamu yang datang mendapatkan pengalaman menginap yang aman, praktis, dan tanpa repot."
-     </p>
-    </div>
-
-    <!-- 3 Cards Layanan Tambahan -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-
-     <!-- 1. Keamanan & Parkir -->
-     <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-md border border-border-subtle flex flex-col group">
-      <div class="w-12 h-12 rounded-xl bg-primary-container/10 text-primary-container flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-       <span class="material-symbols-outlined text-2xl">security</span>
-      </div>
-      <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-3">
-       Keamanan Terjamin &amp; Parkir Luas
-      </h3>
-      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-       "Keamanan Anda adalah priority kami. Setiap homestay dilengkapi dengan sistem CCTV, pagar rumah yang aman, dan carport yang dapat menampung 2 hingga 3 mobil."
-      </p>
-     </div>
-
-     <!-- 2. Fasilitas Kebersihan Mandiri -->
-     <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-md border border-border-subtle flex flex-col group">
-      <div class="w-12 h-12 rounded-xl bg-primary-container/10 text-primary-container flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-       <span class="material-symbols-outlined text-2xl">dry_cleaning</span>
-      </div>
-      <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-3">
-       Fasilitas Kebersihan Mandiri
-      </h3>
-      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-       "Membawa banyak pakaian kotor setelah berwisata? Homestay kami dilengkapi dengan fasilitas mesin cuci (satu tabung) dan setrika untuk kemudahan Anda selama menginap."
-      </p>
-     </div>
-
-     <!-- 3. Layanan Tambahan (By Request) -->
-     <div class="bg-surface-container-lowest p-8 rounded-2xl shadow-md border border-border-subtle flex flex-col group">
-      <div class="w-12 h-12 rounded-xl bg-primary-container/10 text-primary-container flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-       <span class="material-symbols-outlined text-2xl">room_service</span>
-      </div>
-      <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold mb-3">
-       Layanan Tambahan (By Request)
-      </h3>
-      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-       "Untuk menambah kenyamanan Anda (khusus unit tertentu), kami juga dapat membantu menyediakan layanan antar-jemput, laundry, hingga pesanan sarapan dan makan malam."
-      </p>
-     </div>
-
-    </div>
-
    </div>
   </section>
 
     <!-- ============================================================ CTA SECTION -->
   <section id="section-cta" class="relative w-full py-16 lg:py-24 overflow-hidden text-white">
-   <!-- Background Image with CTA.webp -->
-   <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/Other/CTA.webp');"></div>
+   <!-- Background Image with CTA.png -->
+   <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Other/CTA.webp');"></div>
    <!-- Semi-Transparent Dark Navy Overlay -->
    <div class="absolute inset-0 bg-[#0B1B32]/25" style="background-color: rgba(11, 27, 50, 0.25);"></div>
 
@@ -551,7 +607,7 @@
     </p>
     <a id="btn-pesan-sekarang"
      class="inline-flex items-center gap-3 bg-surface-container-lowest hover:bg-surface-warm text-primary-container font-headline-md text-headline-md px-8 py-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
-     href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Home%20-%20Homestay%20in%20Jogja%20%28https%3A//homestayinjogja.com/%29.%20Terima%20kasih.%0A%0Ahttps%3A//homestayinjogja.com/assets/Logo/Logo%2520Utama.webp" rel="noopener noreferrer" target="_blank">
+     href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Home%20-%20Homestay%20in%20Jogja%20(https%3A%2F%2Fhomestayinjogja.com%2F).%20Terima%20kasih.%0A%0Ahttps%3A%2F%2Fhomestayinjogja.com%2Fassets%2FLogo%2FLogo%20Utama.webp" rel="noopener noreferrer" target="_blank">
      <span class="material-symbols-outlined text-xl">chat</span>
      <span>Pesan Sekarang</span>
     </a>
@@ -564,7 +620,7 @@
 <!-- ============================================================ FOOTER -->
 <footer id="footer" class="relative w-full overflow-hidden text-white pt-space-xl pb-space-lg">
  <!-- Background Image with 50% Navy Overlay -->
- <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/Other/footer.webp')"></div>
+ <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Other/footer.webp')"></div>
  <div class="absolute inset-0 bg-[#0B1B32]/75" style="background-color: rgba(11, 27, 50, 0.75);"></div>
 
  <div class="relative max-w-7xl mx-auto px-6 lg:px-12 z-10">
@@ -575,7 +631,7 @@
     <div class="flex items-center gap-space-sm">
      <div class="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-white/10 border border-white/20">
       <img alt="Homestay in Jogja Logo" class="w-full h-full object-cover"
-       src="assets/Logo/Logo Utama.webp"/>
+       src="../assets/Logo/Logo Utama.webp"/>
      </div>
      <span class="font-headline-md text-headline-md text-white font-bold">Homestay in Jogja</span>
     </div>
@@ -598,11 +654,11 @@
    <div class="flex flex-col gap-space-sm">
     <span class="font-headline-md text-headline-md text-white font-bold">Menu Navigasi</span>
     <div class="flex flex-col gap-2">
-     <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="index.html">Home</a>
-     <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="homestay.html">Homestay</a>
-     <a class="font-body-md text-body-md text-primary-fixed-dim font-bold transition-colors" href="fasilitas.html">Fasilitas</a>
-     <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="faq.html">FAQ</a>
-     <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="kontak.html">Kontak</a>
+     <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="../">Home</a>
+     <a class="font-body-md text-body-md text-primary-fixed-dim font-bold transition-colors" href="./">Homestay</a>
+     <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="../fasilitas/">Fasilitas</a>
+     <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="../faq/">FAQ</a>
+     <a class="font-body-md text-body-md text-slate-200 hover:text-white transition-colors" href="../kontak/">Kontak</a>
     </div>
    </div>
 
@@ -613,7 +669,7 @@
      <div>
       <p class="font-body-sm text-body-sm text-slate-200 font-bold uppercase tracking-wider mb-1">Admin 1 (UTAMA)</p>
       <a class="inline-flex items-center gap-2 hover:text-white transition-colors font-semibold"
-       href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Home%20-%20Homestay%20in%20Jogja%20%28https%3A//homestayinjogja.com/%29.%20Terima%20kasih.%0A%0Ahttps%3A//homestayinjogja.com/assets/Logo/Logo%2520Utama.webp" target="_blank" rel="noopener noreferrer">
+       href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Home%20-%20Homestay%20in%20Jogja%20%28https%3A//homestayinjogja.com/%29.%20Terima%20kasih.%0A%0Ahttps%3A//homestayinjogja.com/../assets/Logo/Logo%2520Utama.webp" target="_blank" rel="noopener noreferrer">
        <span class="material-symbols-outlined text-[#25D366] text-lg">chat</span>
        <span>0812-2960-504</span>
       </a>
@@ -764,7 +820,7 @@
 
    admins.forEach(function (admin) {
     var link = document.createElement('a');
-     link.href = 'https://wa.me/' + admin.number + '?text=' + encodeURIComponent('Halo Admin Homestay in Jogja, saya ingin bertanya tentang ketersediaan kamar. Saya mendapatkan informasi ini dari halaman: Home - Homestay in Jogja (https://homestayinjogja.com/). Terima kasih.\n\nhttps://homestayinjogja.com/assets/Logo/Logo%20Utama.webp');
+     link.href = 'https://wa.me/' + admin.number + '?text=' + encodeURIComponent('Halo Admin Homestay in Jogja, saya ingin bertanya tentang ketersediaan kamar. Saya mendapatkan informasi ini dari halaman: Home - Homestay in Jogja (https://homestayinjogja.com/). Terima kasih.\n\nhttps://homestayinjogja.com/../assets/Logo/Logo%20Utama.webp');
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.style.display = 'flex';
@@ -915,6 +971,37 @@
    });
   })();
  </script>
- <script src="assets/booking-choice.js"></script>
+ <!-- Homestay Card Entrance Animation Script -->
+ <script>
+  (function () {
+   var entranceCards = document.querySelectorAll('.homestay-card-entrance');
+   if (!entranceCards.length) return;
+
+   if ('IntersectionObserver' in window) {
+    var cardObserver = new IntersectionObserver(function (entries, observer) {
+     entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+       var el = entry.target;
+       var delay = parseInt(el.getAttribute('data-entrance-delay') || '0', 10);
+       setTimeout(function () {
+        el.classList.add('is-visible');
+       }, delay);
+       observer.unobserve(el);
+      }
+     });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    entranceCards.forEach(function (card) {
+     cardObserver.observe(card);
+    });
+   } else {
+    // Fallback for older browsers
+    entranceCards.forEach(function (card) {
+     card.classList.add('is-visible');
+    });
+   }
+  })();
+ </script>
+ <script src="../assets/booking-choice.js"></script>
 </body>
 </html>

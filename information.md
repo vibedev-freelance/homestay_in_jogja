@@ -256,3 +256,24 @@ dan fasilitas olahraga.
     pengelola sebelum dipublikasikan. Jangan menebak.
 8.  Gunakan nama properti dan tautan Google Maps yang tepat untuk tombol
     lokasi atau petunjuk arah.
+
+## Struktur URL Website
+
+Halaman website menggunakan URL produksi berikut:
+
+-   Homepage: `/`
+-   Daftar homestay: `/homestay/`
+-   Fasilitas: `/fasilitas/`
+-   FAQ: `/faq/`
+-   Kontak: `/kontak/`
+-   Griya Pojok: `/product/griya-pojok/`
+-   Girly Homestay: `/product/girly-homestay/`
+-   Omah Pakualaman: `/product/omah-pakualaman/`
+-   Omah Kadipaten: `/product/omah-kadipaten/`
+
+Struktur direktori menyajikan setiap halaman melalui `index.html` dan
+mempertahankan jalur URL produksi tersebut, sehingga tidak diperlukan
+redirect untuk halaman-halaman ini. Canonical setiap halaman menunjuk
+ke domain produksi `https://homestayinjogja.com/`. Tautan dan aset lokal
+menggunakan jalur relatif agar tetap berfungsi pada preview GitHub Pages
+di bawah `/homestay_in_jogja/`.
