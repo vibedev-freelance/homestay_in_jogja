@@ -1,0 +1,121 @@
+.detail-gallery-card {
+ cursor: zoom-in;
+}
+
+.detail-gallery-card:focus-visible {
+ outline: 3px solid #2563eb;
+ outline-offset: 4px;
+}
+
+.gallery-lightbox {
+ width: 100%;
+ max-width: none;
+ height: 100%;
+ max-height: none;
+ margin: 0;
+ padding: 0;
+ border: 0;
+ overflow: hidden;
+ color: #fff;
+ background: transparent;
+}
+
+.gallery-lightbox::backdrop {
+ background: rgba(8, 12, 20, 0.72);
+ -webkit-backdrop-filter: blur(10px);
+ backdrop-filter: blur(10px);
+}
+
+.gallery-lightbox__layout {
+ position: relative;
+ display: flex;
+ width: 100%;
+ height: 100%;
+ align-items: center;
+ justify-content: center;
+ padding: 5rem 1rem 2rem;
+}
+
+.gallery-lightbox__image {
+ display: block;
+ max-width: 92vw;
+ max-height: 82vh;
+ object-fit: contain;
+ transform: scale(1);
+ transition: transform 160ms ease;
+ cursor: zoom-in;
+ user-select: none;
+}
+
+.gallery-lightbox__image.is-zoomed {
+ cursor: zoom-out;
+}
+
+.gallery-lightbox__close,
+.gallery-lightbox__zoom-button {
+ display: inline-flex;
+ min-width: 2.75rem;
+ min-height: 2.75rem;
+ align-items: center;
+ justify-content: center;
+ border: 1px solid rgba(255, 255, 255, 0.3);
+ border-radius: 9999px;
+ color: #fff;
+ background: rgba(20, 24, 32, 0.72);
+ font: inherit;
+ cursor: pointer;
+ transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.gallery-lightbox__close:hover,
+.gallery-lightbox__zoom-button:hover {
+ background: rgba(20, 24, 32, 0.95);
+ transform: scale(1.05);
+}
+
+.gallery-lightbox__close:focus-visible,
+.gallery-lightbox__zoom-button:focus-visible {
+ outline: 3px solid #fff;
+ outline-offset: 3px;
+}
+
+.gallery-lightbox__close {
+ position: absolute;
+ top: 1rem;
+ right: 1rem;
+ font-size: 1.75rem;
+ line-height: 1;
+}
+
+.gallery-lightbox__controls {
+ position: absolute;
+ bottom: 1rem;
+ left: 50%;
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ transform: translateX(-50%);
+}
+
+.gallery-lightbox__zoom-button {
+ font-size: 1.25rem;
+ line-height: 1;
+}
+
+.gallery-lightbox__zoom-level {
+ min-width: 3.5rem;
+ text-align: center;
+ font-size: 0.875rem;
+ text-shadow: 0 1px 4px #000;
+}
+
+@media (max-width: 640px) {
+ .gallery-lightbox__layout {
+  padding: 4.5rem 0.5rem 5rem;
+ }
+
+ .gallery-lightbox__image {
+  max-width: 96vw;
+  max-height: 78vh;
+ }
+}

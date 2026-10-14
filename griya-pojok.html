@@ -10,6 +10,8 @@
  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+ <link rel="stylesheet" href="assets/gallery-lightbox.css"/>
+ <link rel="stylesheet" href="assets/booking-choice.css"/>
  <style>
   html {
    scroll-behavior: smooth;
@@ -278,7 +280,7 @@
     <a class="flex items-center justify-center gap-2 bg-primary-container hover:bg-primary text-white py-3 rounded-2xl font-body-md font-bold shadow-md transition-all"
      href="https://wa.me/628122960504?text=Halo%20Admin%20Homestay%20in%20Jogja%2C%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20kamar.%20Saya%20mendapatkan%20informasi%20ini%20dari%20halaman%3A%20Home%20-%20Homestay%20in%20Jogja%20%28https%3A//homestayinjogja.com/%29.%20Terima%20kasih.%0A%0Ahttps%3A//homestayinjogja.com/assets/Logo/Logo%2520Utama.webp" rel="noopener noreferrer" target="_blank">
      <span class="material-symbols-outlined text-lg">calendar_month</span>
-     <span>Reservasi via WhatsApp</span>
+     <span>Reservasi Sekarang</span>
     </a>
    </div>
   </nav>
@@ -563,6 +565,10 @@
       <span class="material-symbols-outlined text-2xl">chat</span>
       <span>Pesan Unit Ini via WA</span>
      </a>
+     <button type="button" data-booking-app-open class="w-full inline-flex items-center justify-center gap-3 bg-primary-container hover:bg-primary text-white font-headline-md text-headline-md px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all">
+      <span class="material-symbols-outlined text-2xl">event_available</span>
+      <span>Pesan Unit ini via Aplikasi</span>
+     </button>
 
      <!-- Payment Guarantee Note -->
      <div class="bg-error-container/60 p-4 rounded-xl text-center text-on-error-container font-body-sm text-xs leading-relaxed border border-error/20">
@@ -1000,5 +1006,7 @@
    });
   })();
  </script>
+ <script src="assets/gallery-lightbox.js"></script>
+ <script src="assets/booking-choice.js"></script>
 </body>
 </html>
