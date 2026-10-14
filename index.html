@@ -10,6 +10,7 @@
  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+ <link rel="stylesheet" href="assets/gallery-lightbox.css"/>
  <link rel="stylesheet" href="assets/booking-choice.css"/>
  <style>
   html {
@@ -560,7 +561,7 @@
     </div>
 
     <!-- Gallery Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 w-full">
+    <div id="homepage-gallery-root" class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 w-full">
      <div class="col-span-2 row-span-2 relative overflow-hidden rounded-2xl group cursor-pointer aspect-square md:aspect-auto">
       <img class="gallery-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-gallery-key="girly" alt="Girly Homestay" loading="lazy"/>
       <div class="absolute inset-0 bg-gradient-to-t from-on-surface/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -1346,6 +1347,7 @@
    });
   })();
  </script>
+ <script src="assets/gallery-lightbox.js"></script>
  <script src="assets/booking-choice.js"></script>
 </body>
 </html>

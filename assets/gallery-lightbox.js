@@ -1,13 +1,13 @@
 (function () {
- const galleryRoot = document.getElementById('detail-gallery-root');
- if (!galleryRoot) return;
+ const galleryRoots = document.querySelectorAll('#detail-gallery-root, #homepage-gallery-root');
+ if (!galleryRoots.length) return;
 
  const dialog = document.createElement('dialog');
  dialog.className = 'gallery-lightbox';
  dialog.setAttribute('aria-label', 'Galeri foto');
  dialog.innerHTML =
   '<div class="gallery-lightbox__layout">' +
-   '<button class="gallery-lightbox__close" type="button" aria-label="Tutup galeri">&times;</button>' +
+   '<button class="gallery-lightbox__close" type="button" aria-label="Tutup galeri"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17"></path></svg></button>' +
    '<img class="gallery-lightbox__image" alt="">' +
    '<div class="gallery-lightbox__controls" aria-label="Kontrol zoom">' +
     '<button class="gallery-lightbox__zoom-button" type="button" data-zoom="-1" aria-label="Perkecil gambar">&minus;</button>' +
@@ -45,26 +45,30 @@
   dialog.close();
  }
 
- galleryRoot.querySelectorAll('img').forEach(function (image) {
-  const card = image.parentElement;
-  if (!card) return;
-  card.classList.add('detail-gallery-card');
-  card.setAttribute('role', 'button');
-  card.setAttribute('tabindex', '0');
-  card.setAttribute('aria-label', 'Perbesar ' + image.alt);
- });
+ galleryRoots.forEach(function (galleryRoot) {
+  galleryRoot.querySelectorAll('img').forEach(function (image) {
+   const card = image.parentElement;
+   if (!card) return;
+   card.classList.add('detail-gallery-card');
+   card.setAttribute('role', 'button');
+   card.setAttribute('tabindex', '0');
+   card.setAttribute('aria-label', 'Perbesar ' + image.alt);
+  });
 
- galleryRoot.addEventListener('click', function (event) {
-  const image = event.target.closest('img');
-  if (image && galleryRoot.contains(image)) openImage(image);
- });
+  galleryRoot.addEventListener('click', function (event) {
+   const card = event.target.closest('.detail-gallery-card');
+   if (!card || !galleryRoot.contains(card)) return;
+   const image = card.querySelector('img');
+   if (image) openImage(image);
+  });
 
- galleryRoot.addEventListener('keydown', function (event) {
-  if (event.key !== 'Enter' && event.key !== ' ') return;
-  const card = event.target.closest('.detail-gallery-card');
-  if (!card || !galleryRoot.contains(card)) return;
-  event.preventDefault();
-  openImage(card.querySelector('img'));
+  galleryRoot.addEventListener('keydown', function (event) {
+   if (event.key !== 'Enter' && event.key !== ' ') return;
+   const card = event.target.closest('.detail-gallery-card');
+   if (!card || !galleryRoot.contains(card)) return;
+   event.preventDefault();
+   openImage(card.querySelector('img'));
+  });
  });
 
  closeButton.addEventListener('click', closeDialog);

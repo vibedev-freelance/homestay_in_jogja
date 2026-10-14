@@ -83,8 +83,22 @@
  position: absolute;
  top: 1rem;
  right: 1rem;
- font-size: 1.75rem;
- line-height: 1;
+ width: 2.75rem;
+ height: 2.75rem;
+ min-width: 0;
+ min-height: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+.gallery-lightbox__close svg {
+ display: block;
+ width: 1.125rem;
+ height: 1.125rem;
+ fill: none;
+ stroke: currentColor;
+ stroke-linecap: round;
+ stroke-width: 2;
 }
 
 .gallery-lightbox__controls {
@@ -99,6 +113,13 @@
 
 .gallery-lightbox__zoom-button {
  font-size: 1.25rem;
+ line-height: 1;
+}
+
+.gallery-lightbox__zoom-button[data-zoom="reset"] {
+ min-width: 4.25rem;
+ padding: 0 0.75rem;
+ font-size: 0.875rem;
  line-height: 1;
 }
 
