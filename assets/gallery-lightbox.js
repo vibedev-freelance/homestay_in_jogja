@@ -32,7 +32,7 @@
  }
 
  function openImage(image) {
-  lightboxImage.src = image.src;
+  lightboxImage.src = image.dataset.fullSrc || image.src;
   lightboxImage.alt = image.alt;
   setScale(1);
   previousBodyOverflow = document.body.style.overflow;

@@ -1,0 +1,14 @@
+{
+  "name": "homestay-in-jogja",
+  "private": true,
+  "scripts": {
+    "build": "npm run optimize:images && npm run build:css && npm run fingerprint:assets",
+    "build:css": "tailwindcss -i ./assets/tailwind.css -o ./assets/site.css --minify",
+    "fingerprint:assets": "node scripts/fingerprint-assets.cjs",
+    "optimize:images": "node scripts/optimize-images.cjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5",
+    "tailwindcss": "3.4.17"
+  }
+}
