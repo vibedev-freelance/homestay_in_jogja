@@ -8,7 +8,7 @@
   <FilesMatch "\.(webp|mpeg|mp4|woff2)$">
     Header set Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
   </FilesMatch>
-  <FilesMatch "-[a-f0-9]{12}(?:-(?:480|768))?\.(?:webp|css|js)$">
+  <FilesMatch "-[a-f0-9]{12}(?:-(?:480|768))?\.(?:webp|jpe?g|css|js)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 </IfModule>
