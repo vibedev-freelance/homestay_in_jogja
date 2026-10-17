@@ -6,7 +6,11 @@ const sharp = require('sharp');
 const root = path.resolve(__dirname, '..');
 const outputDirectory = path.join(root, 'assets', 'optimized');
 const pages = [
-  { file: 'index.html', image: 'assets/Hero/Prambanan.webp' },
+  {
+    file: 'index.html',
+    image: 'assets/Logo/Logo Utama.webp',
+    imageFit: 'contain'
+  },
   {
     file: 'product/girly-homestay/index.html',
     image: 'assets/Girly Homestay/DSCF1389.webp'
@@ -41,13 +45,20 @@ function escapeAttribute(value) {
     .replace(/</g, '&lt;');
 }
 
-async function createSocialImage(source) {
+async function createSocialImage(source, fit = 'cover') {
   const image = await sharp(path.join(root, source))
-    .resize(1200, 630, { fit: 'cover', position: 'attention' })
+    .resize(1200, 630, {
+      fit,
+      position: 'attention',
+      ...(fit === 'contain' ? { background: '#ffffff' } : {})
+    })
     .jpeg({ quality: 85, mozjpeg: true })
     .toBuffer();
   const hash = createHash('sha256').update(image).digest('hex').slice(0, 12);
-  const filename = `og-${path.basename(source, path.extname(source))}-${hash}.jpg`;
+  const imageName = path
+    .basename(source, path.extname(source))
+    .replace(/\s+/g, '-');
+  const filename = `og-${imageName}-${hash}.jpg`;
 
   await fs.writeFile(path.join(outputDirectory, filename), image);
   return `https://homestayinjogja.com/assets/optimized/${filename}`;
@@ -76,12 +87,12 @@ function cleanWhatsAppTemplates(html) {
   );
 
   return html.replace(
-    /\\n\\nhttps:\/\/homestayinjogja\.com\/assets\/Logo\/Logo%20Utama\.webp/g,
+    /\\n\\nhttps:\/\/homestayinjogja\.com\/(?:\.\.\/)*assets\/Logo\/Logo%20Utama\.webp/g,
     ''
   );
 }
 
-async function updatePage({ file, image }) {
+async function updatePage({ file, image, imageFit }) {
   const filename = path.join(root, file);
   let html = await fs.readFile(filename, 'utf8');
   const canonicalMatch = html.match(/<link rel="canonical" href="([^"]+)"\/>/);
@@ -99,7 +110,7 @@ async function updatePage({ file, image }) {
     titleMatch[1].replace(/&amp;/g, '&')
   );
   const description = descriptionMatch[1];
-  const socialImage = await createSocialImage(image);
+  const socialImage = await createSocialImage(image, imageFit);
   const metadata = [
     '<!-- social metadata:start -->',
     '<meta property="og:type" content="website"/>',

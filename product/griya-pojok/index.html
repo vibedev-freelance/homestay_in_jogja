@@ -907,7 +907,9 @@
 
    admins.forEach(function (admin) {
     var link = document.createElement('a');
-     link.href = 'https://wa.me/' + admin.number + '?text=' + encodeURIComponent('Halo Admin Homestay in Jogja, saya ingin bertanya tentang ketersediaan kamar. Saya mendapatkan informasi ini dari halaman: Home - Homestay in Jogja (https://homestayinjogja.com/). Terima kasih.\n\nhttps://homestayinjogja.com/../../assets/Logo/Logo%20Utama.webp');
+    var homestayName = document.querySelector('h1').textContent.trim();
+    var message = 'Halo Admin Homestay in Jogja, saya ingin bertanya tentang ketersediaan kamar di ' + homestayName + '. Saya mendapatkan informasi ini dari halaman: ' + document.title + ' (' + window.location.href + '). Terima kasih.';
+    link.href = 'https://wa.me/' + admin.number + '?text=' + encodeURIComponent(message);
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.style.display = 'flex';
