@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
  <meta charset="utf-8"/>
@@ -90,19 +90,19 @@
 
   </style>
  <style>
-  /* hero-fixed-bg on <img>: achieves parallax effect using position:fixed */
-  /* The section's overflow:hidden clips it to the hero area */
+  /* hero-fixed-bg: position:absolute agar dikurung oleh overflow:hidden section */
+  /* Efek parallax ditangani via JS dengan translateY */
   img.hero-fixed-bg {
-   position: fixed !important;
+   position: absolute !important;
    top: 0 !important;
    left: 0 !important;
    width: 100% !important;
-   height: 100% !important;
+   height: 120% !important;
    object-fit: cover !important;
    object-position: center !important;
    will-change: transform;
   }
-  /* iOS fallback class (added by inline script) - converts to absolute scroll */
+  /* iOS: tetap absolute, tidak perlu fallback khusus */
   img.hero-fixed-bg.is-scroll {
    position: absolute !important;
   }
@@ -249,7 +249,7 @@
  <div class="flex flex-col w-full">
 
   <!-- ============================================================ HERO -->
-  <section id="section-hero" class="relative w-full -mt-20 pt-28 pb-20 lg:pb-28 overflow-hidden bg-surface-container-high">
+  <section id="section-hero" class="relative w-full -mt-20 pt-28 pb-20 lg:pb-28 overflow-hidden bg-surface-container-high" style="min-height:520px;max-height:85vh;">
    <!-- Hero Background Image: <img> with fetchpriority=high for LCP optimization -->
    <!-- Using <img> instead of CSS background-image so the browser discovers and prioritizes this resource early -->
    <img
@@ -894,22 +894,33 @@
  </button>
 </div>
 
- <!-- Fixed Background Compatibility for iOS / Touch Devices -->
+ <!-- Lightweight Parallax Script for Hero (position:absolute approach) -->
  <script>
   (function () {
-   // iOS does not support position:fixed reliably inside overflow:hidden containers.
-   // We switch the hero img from position:fixed to position:absolute on iOS.
-   var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-   if (!isIOS) return;
+   var heroSection = document.getElementById('section-hero');
+   var heroBg = heroSection ? heroSection.querySelector('img.hero-fixed-bg') : null;
+   if (!heroSection || !heroBg) return;
 
-   var bgImgs = document.querySelectorAll('img.hero-fixed-bg');
-   if (!bgImgs.length) return;
+   var ticking = false;
+   function onScroll() {
+    if (!ticking) {
+     requestAnimationFrame(function () {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var sectionTop = heroSection.offsetTop;
+      var sectionH = heroSection.offsetHeight;
+      // Hanya aktif saat section hero masih di viewport
+      if (scrollY < sectionTop + sectionH) {
+       var progress = (scrollY - sectionTop);
+       // Faktor parallax 0.3: gambar bergerak 30% dari scroll
+       heroBg.style.transform = 'translateY(' + (progress * 0.3) + 'px)';
+      }
+      ticking = false;
+     });
+     ticking = true;
+    }
+   }
 
-   bgImgs.forEach(function (img) {
-    // Add is-scroll class which CSS converts to absolute positioning
-    img.classList.add('is-scroll');
-   });
+   window.addEventListener('scroll', onScroll, { passive: true });
   })();
  </script>
  <!-- Stats Counter Animation Script -->
