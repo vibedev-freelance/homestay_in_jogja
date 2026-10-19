@@ -1,14 +1,37 @@
 <IfModule mod_headers.c>
+  # HTML documents: always revalidate
   <FilesMatch "\.html$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
-  <FilesMatch "\.(css|js)$">
-    Header set Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
-  </FilesMatch>
-  <FilesMatch "\.(webp|mpeg|mp4|woff2)$">
-    Header set Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
-  </FilesMatch>
+
+  # Fingerprinted assets (content-hash in filename): cache 1 year, immutable
   <FilesMatch "-[a-f0-9]{12}(?:-(?:480|768))?\.(?:webp|jpe?g|css|js)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Feature CSS/JS without fingerprint (booking-choice, gallery-lightbox):
+  # 30-day cache - longer than before (was 7d) to reduce cache misses
+  <FilesMatch "^(booking-choice|gallery-lightbox)\.(css|js)$">
+    Header set Cache-Control "public, max-age=2592000, stale-while-revalidate=86400"
+  </FilesMatch>
+
+  # Images (hero, gallery, logo - stable filenames): 30-day cache
+  <FilesMatch "\.(webp|jpe?g|png|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000, stale-while-revalidate=86400"
+  </FilesMatch>
+
+  # Audio/video: 7-day cache
+  <FilesMatch "\.(mpeg|mp4|ogg|webm)$">
+    Header set Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
+  </FilesMatch>
+
+  # Web fonts (self-hosted woff2): 1-year cache
+  <FilesMatch "\.woff2?$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Generic CSS/JS fallback: 7-day cache
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=604800, stale-while-revalidate=86400"
   </FilesMatch>
 </IfModule>

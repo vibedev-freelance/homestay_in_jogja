@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
  <meta charset="utf-8"/>
@@ -8,14 +8,24 @@
  <meta name="description" content="Homestay dekat Malioboro, Homestay dekat Kraton Jogja, Homestay dekat Alun-Alun Jogja, Homestay keluarga di Jogja, dan Homestay dekat Stasiun Tugu Jogja dengan harga terjangkau."/>
  <link rel="preconnect" href="https://fonts.googleapis.com"/>
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
- <link rel="preload" as="image" href="assets/Hero/Prambanan.webp" fetchpriority="high"/>
- <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
- <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+ <!-- Preload hero image for LCP -->
+ <link rel="preload" as="image" href="assets/Hero/Prambanan.webp" fetchpriority="high" type="image/webp"/>
+ <!-- Google Fonts: single combined request with display=swap to unblock rendering -->
+ <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+ <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"/></noscript>
+ <!-- Material Symbols: deferred — used in nav/icons below the fold initially -->
+ <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+ <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"/></noscript>
+ <!-- Font Awesome: deferred (only used for Threads icon in footer) -->
  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" fetchpriority="low" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'"/>
  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/></noscript>
+ <!-- Critical site CSS: loaded synchronously -->
  <link rel="stylesheet" href="assets/site-0f9703cd1e60.css"/>
- <link rel="stylesheet" href="assets/gallery-lightbox.css"/>
- <link rel="stylesheet" href="assets/booking-choice.css"/>
+ <!-- Non-critical feature CSS: deferred until after initial paint -->
+ <link rel="preload" as="style" href="assets/gallery-lightbox.css" onload="this.onload=null;this.rel='stylesheet'"/>
+ <noscript><link rel="stylesheet" href="assets/gallery-lightbox.css"/></noscript>
+ <link rel="preload" as="style" href="assets/booking-choice.css" onload="this.onload=null;this.rel='stylesheet'"/>
+ <noscript><link rel="stylesheet" href="assets/booking-choice.css"/></noscript>
  <style>
   html {
    scroll-behavior: smooth;
@@ -80,11 +90,21 @@
 
   </style>
  <style>
-  .hero-fixed-bg {
-   background-attachment: fixed !important;
-   background-position: center !important;
-   background-size: cover !important;
-   background-repeat: no-repeat !important;
+  /* hero-fixed-bg on <img>: achieves parallax effect using position:fixed */
+  /* The section's overflow:hidden clips it to the hero area */
+  img.hero-fixed-bg {
+   position: fixed !important;
+   top: 0 !important;
+   left: 0 !important;
+   width: 100% !important;
+   height: 100% !important;
+   object-fit: cover !important;
+   object-position: center !important;
+   will-change: transform;
+  }
+  /* iOS fallback class (added by inline script) - converts to absolute scroll */
+  img.hero-fixed-bg.is-scroll {
+   position: absolute !important;
   }
  </style>
   <link rel="canonical" href="https://homestayinjogja.com/"/>
@@ -230,10 +250,18 @@
 
   <!-- ============================================================ HERO -->
   <section id="section-hero" class="relative w-full -mt-20 pt-28 pb-20 lg:pb-28 overflow-hidden bg-surface-container-high">
-   <!-- Background Image -->
-   <div class="absolute inset-0 bg-cover bg-center bg-fixed hero-fixed-bg"
-    style="background-image: url('assets/Hero/Prambanan.webp')">
-   </div>
+   <!-- Hero Background Image: <img> with fetchpriority=high for LCP optimization -->
+   <!-- Using <img> instead of CSS background-image so the browser discovers and prioritizes this resource early -->
+   <img
+    src="assets/Hero/Prambanan.webp"
+    alt=""
+    aria-hidden="true"
+    fetchpriority="high"
+    decoding="sync"
+    width="1920"
+    height="1080"
+    class="absolute inset-0 w-full h-full object-cover object-center hero-fixed-bg"
+    style="object-fit:cover;"/>
    <!-- Black Semi-Transparent Overlay -->
    <div class="absolute inset-0 bg-black/50"></div>
 
@@ -869,37 +897,19 @@
  <!-- Fixed Background Compatibility for iOS / Touch Devices -->
  <script>
   (function () {
+   // iOS does not support position:fixed reliably inside overflow:hidden containers.
+   // We switch the hero img from position:fixed to position:absolute on iOS.
    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
    if (!isIOS) return;
 
-   var bgEls = document.querySelectorAll('.hero-fixed-bg');
-   if (!bgEls.length) return;
+   var bgImgs = document.querySelectorAll('img.hero-fixed-bg');
+   if (!bgImgs.length) return;
 
-   bgEls.forEach(function (el) {
-    el.style.setProperty('background-attachment', 'scroll', 'important');
+   bgImgs.forEach(function (img) {
+    // Add is-scroll class which CSS converts to absolute positioning
+    img.classList.add('is-scroll');
    });
-
-   var ticking = false;
-   function syncFixedBg() {
-    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    bgEls.forEach(function (el) {
-     var parent = el.parentElement;
-     var parentRect = parent ? parent.getBoundingClientRect() : el.getBoundingClientRect();
-     if (parentRect.bottom > 0 && parentRect.top < window.innerHeight) {
-      el.style.backgroundPositionY = scrollY + 'px';
-     }
-    });
-    ticking = false;
-   }
-
-   window.addEventListener('scroll', function () {
-    if (!ticking) {
-     window.requestAnimationFrame(syncFixedBg);
-     ticking = true;
-    }
-   }, { passive: true });
-   syncFixedBg();
   })();
  </script>
  <!-- Stats Counter Animation Script -->
@@ -1102,30 +1112,30 @@
    var totalSlides = slides.length;
    var currentIndex = 0;
 
-   function getVisibleCount() {
-    if (window.innerWidth >= 1024) return 3;
-    if (window.innerWidth >= 640) return 2;
+   function getVisibleCount(w) {
+    // Accept pre-read viewport width to avoid multiple layout reads
+    if (w >= 1024) return 3;
+    if (w >= 640) return 2;
     return 1;
    }
 
-   function getMaxIndex() {
-    return Math.max(0, totalSlides - getVisibleCount());
-   }
-
    function updateCarousel() {
-    var visible = getVisibleCount();
+    // Batch all layout reads before DOM writes - prevents forced synchronous layout
+    var w = window.innerWidth;
+    var visible = getVisibleCount(w);
     var slideWidth = 100 / visible;
-    var maxIndex = getMaxIndex();
+    var maxIndex = Math.max(0, totalSlides - visible);
     if (currentIndex > maxIndex) currentIndex = maxIndex;
     if (currentIndex < 0) currentIndex = 0;
-
-    track.style.transform = 'translateX(-' + (currentIndex * slideWidth) + '%)';
-
     var progressPct = maxIndex === 0 ? 100 : ((currentIndex / maxIndex) * 100);
-    if (progress) progress.style.width = progressPct + '%';
+    var atStart = currentIndex === 0;
+    var atEnd = currentIndex >= maxIndex;
 
-    if (prevBtn) prevBtn.style.opacity = currentIndex === 0 ? '0.4' : '1';
-    if (nextBtn) nextBtn.style.opacity = currentIndex >= maxIndex ? '0.4' : '1';
+    // Apply all DOM writes grouped together after all reads
+    track.style.transform = 'translateX(-' + (currentIndex * slideWidth) + '%)';
+    if (progress) progress.style.width = progressPct + '%';
+    if (prevBtn) prevBtn.style.opacity = atStart ? '0.4' : '1';
+    if (nextBtn) nextBtn.style.opacity = atEnd ? '0.4' : '1';
    }
 
    if (prevBtn) prevBtn.addEventListener('click', function () {
@@ -1134,11 +1144,18 @@
    });
 
    if (nextBtn) nextBtn.addEventListener('click', function () {
-    currentIndex = Math.min(getMaxIndex(), currentIndex + 1);
+    var wn = window.innerWidth; currentIndex = Math.min(Math.max(0, totalSlides - getVisibleCount(wn)), currentIndex + 1);
     updateCarousel();
    });
 
-   window.addEventListener('resize', updateCarousel);
+   // Debounce resize via rAF to prevent layout thrashing on rapid resize
+   var _rafPending = false;
+   window.addEventListener('resize', function () {
+    if (!_rafPending) {
+     _rafPending = true;
+     window.requestAnimationFrame(function () { _rafPending = false; updateCarousel(); });
+    }
+   });
    updateCarousel();
   })();
  </script>
