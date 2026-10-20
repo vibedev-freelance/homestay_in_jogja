@@ -9,8 +9,8 @@
  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
- <link rel="stylesheet" href="../assets/booking-choice.css"/>
+ <link rel="preload" as="style" href="../assets/booking-choice.css" onload="this.onload=null;this.rel='stylesheet'"/>
+ <noscript><link rel="stylesheet" href="../assets/booking-choice.css"/></noscript>
  <style>
   html {
    scroll-behavior: smooth;
@@ -663,7 +663,7 @@
       <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M21.6 7.5a2.9 2.9 0 0 0-2-2.1C17.9 5 12 5 12 5s-5.9 0-7.6.4a2.9 2.9 0 0 0-2 2.1A30.4 30.4 0 0 0 2 12a30.4 30.4 0 0 0 .4 4.5 2.9 2.9 0 0 0 2 2.1C6.1 19 12 19 12 19s5.9 0 7.6-.4a2.9 2.9 0 0 0 2-2.1A30.4 30.4 0 0 0 22 12a30.4 30.4 0 0 0-.4-4.5ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
      </a>
      <a class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center hover:bg-primary-container hover:text-on-primary transition-all shadow-sm" href="https://www.threads.com/@homestayinjogja?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" aria-label="Threads">
-      <i class="fa-brands fa-threads text-base" aria-hidden="true"></i>
+      <svg viewBox="0 0 192 192" class="w-4 h-4 fill-current" aria-hidden="true"><path d="M141.537 88.988a66.667 66.667 0 0 0-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.05l13.78 9.428c5.73-8.695 14.724-10.548 21.347-10.548h.23c8.249.053 14.474 2.452 18.502 7.13 2.932 3.405 4.893 8.11 5.864 14.05-7.314-1.243-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.35-22.809-.169-40.06-7.484-51.275-21.742C35.236 139.966 29.808 120.682 29.605 96c.203-24.682 5.63-43.966 16.133-57.317C56.954 24.425 74.206 17.11 97.015 16.94c22.975.17 40.526 7.52 52.171 21.847 5.71 7.026 10.015 15.86 12.853 26.162l16.147-4.308c-3.44-12.68-8.853-23.606-16.219-32.668C147.036 10.646 125.202 1.205 97.144 1h-.36C68.741 1.205 47.08 10.68 32.76 28.256 19.962 43.838 13.36 65.67 13.14 95.933l-.002.067.002.067c.22 30.262 6.821 52.095 19.618 67.676 14.32 17.576 36.18 26.82 65.396 27.024h.4c25.895-.174 44.35-6.971 59.325-21.936 19.363-19.617 18.76-43.968 12.384-58.74-4.506-10.506-13.232-19.044-28.728-24.104Z"/></svg>
      </a>
     </div>
    </div>
@@ -944,6 +944,6 @@
    });
   })();
  </script>
- <script src="../assets/booking-choice.js"></script>
+ <script src="../assets/booking-choice.js" defer></script>
 </body>
 </html>
