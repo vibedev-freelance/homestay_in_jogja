@@ -75,6 +75,7 @@ async function main() {
   const indexPath = path.join(root, 'index.html');
   let html = await fs.readFile(indexPath, 'utf8');
 
+
   for (const [name, version] of versions) {
     if (name.startsWith('gallery-') || responsiveImages.some(([, imageName]) => imageName === name)) {
       for (const width of [480, 768]) {

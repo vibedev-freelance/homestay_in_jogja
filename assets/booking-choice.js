@@ -1,4 +1,6 @@
 (function () {
+ if (!document.querySelector('#btn-reservasi-header, #btn-pesan-sekarang, #mobile-menu a[href*="wa.me/628122960504"], [data-booking-app-open]')) return;
+
  const mobileMenu = document.getElementById('mobile-menu');
  if (mobileMenu) {
   function syncMobileMenuBackdrop() {

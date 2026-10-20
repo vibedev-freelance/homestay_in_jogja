@@ -2,51 +2,38 @@
  const galleryRoots = document.querySelectorAll('#detail-gallery-root, #homepage-gallery-root');
  if (!galleryRoots.length) return;
 
- const dialog = document.createElement('dialog');
- dialog.className = 'gallery-lightbox';
- dialog.setAttribute('aria-label', 'Galeri foto');
- dialog.innerHTML =
-  '<div class="gallery-lightbox__layout">' +
-   '<button class="gallery-lightbox__close" type="button" aria-label="Tutup galeri"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17"></path></svg></button>' +
-   '<img class="gallery-lightbox__image" alt="">' +
-   '<div class="gallery-lightbox__controls" aria-label="Kontrol zoom">' +
-    '<button class="gallery-lightbox__zoom-button" type="button" data-zoom="-1" aria-label="Perkecil gambar">&minus;</button>' +
-    '<span class="gallery-lightbox__zoom-level" aria-live="polite">100%</span>' +
-    '<button class="gallery-lightbox__zoom-button" type="button" data-zoom="1" aria-label="Perbesar gambar">+</button>' +
-    '<button class="gallery-lightbox__zoom-button" type="button" data-zoom="reset" aria-label="Atur ulang zoom">Reset</button>' +
-   '</div>' +
-  '</div>';
- document.body.appendChild(dialog);
-
- const lightboxImage = dialog.querySelector('.gallery-lightbox__image');
- const zoomLevel = dialog.querySelector('.gallery-lightbox__zoom-level');
- const closeButton = dialog.querySelector('.gallery-lightbox__close');
- let scale = 1;
- let previousBodyOverflow = '';
-
- function setScale(nextScale) {
-  scale = Math.max(1, Math.min(3, nextScale));
-  lightboxImage.style.transform = 'scale(' + scale + ')';
-  lightboxImage.classList.toggle('is-zoomed', scale > 1);
-  zoomLevel.textContent = Math.round(scale * 100) + '%';
+ let lightboxPromise;
+ function loadLightbox() {
+  if (!lightboxPromise) {
+   const scriptUrl = document.querySelector('script[src*="gallery-lightbox"]')?.src;
+   lightboxPromise = Promise.all([
+    import('./gallery-lightbox-module.js'),
+    new Promise(function (resolve, reject) {
+     const stylesheet = document.createElement('link');
+     stylesheet.rel = 'stylesheet';
+     stylesheet.href = new URL('./gallery-lightbox.css', scriptUrl || document.baseURI).href;
+     stylesheet.onload = resolve;
+     stylesheet.onerror = reject;
+     document.head.appendChild(stylesheet);
+    })
+   ]).then(function (results) { return results[0]; });
+  }
+  return lightboxPromise;
  }
 
- function openImage(image) {
-  lightboxImage.src = image.dataset.fullSrc || image.src;
-  lightboxImage.alt = image.alt;
-  setScale(1);
-  previousBodyOverflow = document.body.style.overflow;
-  document.body.style.overflow = 'hidden';
-  dialog.showModal();
-  closeButton.focus();
+ function activateCard(card) {
+  const image = card && card.querySelector('img');
+  if (!image) return;
+  loadLightbox().then(function (module) {
+   module.openImage(image);
+  }).catch(function (error) {
+   lightboxPromise = null;
+   console.error('Unable to load gallery lightbox', error);
+  });
  }
 
- function closeDialog() {
-  dialog.close();
- }
-
- galleryRoots.forEach(function (galleryRoot) {
-  galleryRoot.querySelectorAll('img').forEach(function (image) {
+ function prepareImages(root) {
+  root.querySelectorAll('img').forEach(function (image) {
    const card = image.parentElement;
    if (!card) return;
    card.classList.add('detail-gallery-card');
@@ -54,12 +41,33 @@
    card.setAttribute('tabindex', '0');
    card.setAttribute('aria-label', 'Perbesar ' + image.alt);
   });
+ }
+
+ galleryRoots.forEach(function (galleryRoot) {
+  prepareImages(galleryRoot);
+  if (galleryRoot.id === 'detail-gallery-root') {
+   new MutationObserver(function (records) {
+    records.forEach(function (record) {
+     record.addedNodes.forEach(function (node) {
+      if (node.nodeType !== 1) return;
+      if (node.matches('img')) {
+       const card = node.parentElement;
+       if (!card) return;
+       card.classList.add('detail-gallery-card');
+       card.setAttribute('role', 'button');
+       card.setAttribute('tabindex', '0');
+       card.setAttribute('aria-label', 'Perbesar ' + node.alt);
+      } else {
+       prepareImages(node);
+      }
+     });
+    });
+   }).observe(galleryRoot, { childList: true, subtree: true });
+  }
 
   galleryRoot.addEventListener('click', function (event) {
    const card = event.target.closest('.detail-gallery-card');
-   if (!card || !galleryRoot.contains(card)) return;
-   const image = card.querySelector('img');
-   if (image) openImage(image);
+   if (card && galleryRoot.contains(card)) activateCard(card);
   });
 
   galleryRoot.addEventListener('keydown', function (event) {
@@ -67,37 +75,7 @@
    const card = event.target.closest('.detail-gallery-card');
    if (!card || !galleryRoot.contains(card)) return;
    event.preventDefault();
-   openImage(card.querySelector('img'));
+   activateCard(card);
   });
  });
-
- closeButton.addEventListener('click', closeDialog);
-
- dialog.addEventListener('click', function (event) {
-  if (event.target === dialog) closeDialog();
- });
-
- dialog.addEventListener('close', function () {
-  document.body.style.overflow = previousBodyOverflow;
- });
-
- dialog.querySelectorAll('[data-zoom]').forEach(function (button) {
-  button.addEventListener('click', function () {
-   const zoom = button.getAttribute('data-zoom');
-   if (zoom === 'reset') {
-    setScale(1);
-   } else {
-    setScale(scale + Number(zoom) * 0.25);
-   }
-  });
- });
-
- lightboxImage.addEventListener('click', function () {
-  setScale(scale === 1 ? 2 : 1);
- });
-
- lightboxImage.addEventListener('wheel', function (event) {
-  event.preventDefault();
-  setScale(scale + (event.deltaY < 0 ? 0.25 : -0.25));
- }, { passive: false });
 })();

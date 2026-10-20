@@ -8,22 +8,9 @@
  <meta name="description" content="Homestay dekat Malioboro, Homestay dekat Kraton Jogja, Homestay dekat Alun-Alun Jogja, Homestay keluarga di Jogja, dan Homestay dekat Stasiun Tugu Jogja dengan harga terjangkau."/>
  <link rel="preconnect" href="https://fonts.googleapis.com"/>
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
- <!-- Preload hero image for LCP -->
- <link rel="preload" as="image" href="assets/Hero/Prambanan.webp" fetchpriority="high" type="image/webp"/>
- <!-- Google Fonts: single combined request with display=swap to unblock rendering -->
- <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
- <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"/></noscript>
- <!-- Material Symbols: deferred — used in nav/icons below the fold initially -->
- <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
- <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"/></noscript>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"/>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"/>
  <!-- Font Awesome removed: Threads icon replaced with inline SVG to eliminate CDN font request -->
- <!-- Critical site CSS: loaded synchronously -->
- <link rel="stylesheet" href="assets/site-0f9703cd1e60.css"/>
- <!-- Non-critical feature CSS: deferred until after initial paint -->
- <link rel="preload" as="style" href="assets/gallery-lightbox.css" onload="this.onload=null;this.rel='stylesheet'"/>
- <noscript><link rel="stylesheet" href="assets/gallery-lightbox.css"/></noscript>
- <link rel="preload" as="style" href="assets/booking-choice.css" onload="this.onload=null;this.rel='stylesheet'"/>
- <noscript><link rel="stylesheet" href="assets/booking-choice.css"/></noscript>
  <style>
   html {
    scroll-behavior: smooth;
@@ -105,6 +92,7 @@
    position: absolute !important;
   }
  </style>
+    <link rel="stylesheet" href="assets/site-567a9a723472.css"/>
   <link rel="canonical" href="https://homestayinjogja.com/"/>
  <!-- social metadata:start -->
  <meta property="og:type" content="website"/>
@@ -259,6 +247,7 @@
     width="1920"
     height="1080"
     class="absolute inset-0 w-full h-full object-cover object-center hero-fixed-bg"
+    fetchpriority="high"
     style="object-fit:cover;"/>
    <!-- Black Semi-Transparent Overlay -->
    <div class="absolute inset-0 bg-black/50"></div>
@@ -899,43 +888,19 @@
    var heroBg = heroSection ? heroSection.querySelector('img.hero-fixed-bg') : null;
    if (!heroSection || !heroBg) return;
 
-   // Cache layout values once at init — avoid re-reading offsetTop/offsetHeight
-   // inside the rAF callback (which causes forced synchronous layout on every frame)
-   var sectionTop = heroSection.offsetTop;
-   var sectionH = heroSection.offsetHeight;
-
-   // Re-measure on resize (debounced via rAF) so values stay accurate after
-   // font loading or window resize without thrashing on every scroll event
-   var resizePending = false;
-   window.addEventListener('resize', function () {
-    if (!resizePending) {
-     resizePending = true;
-     requestAnimationFrame(function () {
-      sectionTop = heroSection.offsetTop;
-      sectionH = heroSection.offsetHeight;
-      resizePending = false;
-     });
-    }
-   }, { passive: true });
-
+   // Drive the transform from scroll position only; this avoids forced layout reads.
    var ticking = false;
    function onScroll() {
-    if (!ticking) {
-     requestAnimationFrame(function () {
-      var scrollY = window.scrollY || window.pageYOffset;
-      // Hanya aktif saat section hero masih di viewport
-      if (scrollY < sectionTop + sectionH) {
-       var progress = (scrollY - sectionTop);
-       // Faktor parallax 0.3: gambar bergerak 30% dari scroll
-       heroBg.style.transform = 'translateY(' + (progress * 0.3) + 'px)';
-      }
-      ticking = false;
-     });
-     ticking = true;
-    }
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+     var scrollY = window.scrollY || window.pageYOffset;
+     heroBg.style.transform = 'translateY(' + (scrollY * 0.3) + 'px)';
+     ticking = false;
+    });
    }
-
    window.addEventListener('scroll', onScroll, { passive: true });
+   onScroll();
   })();
  </script>
  <!-- Stats Counter Animation Script -->
@@ -1325,7 +1290,7 @@
    });
   })();
  </script>
- <script src="assets/gallery-lightbox-6dd41840871f.js" defer></script>
  <script src="assets/booking-choice.js" defer></script>
+ <script src="assets/gallery-lightbox-f4547b17fd80.js" defer></script>
 </body>
 </html>

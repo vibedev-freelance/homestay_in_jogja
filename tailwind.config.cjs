@@ -1,5 +1,12 @@
 module.exports = {
-  content: ['./index.html'],
+  content: [
+    './index.html',
+    './faq/index.html',
+    './fasilitas/index.html',
+    './homestay/index.html',
+    './kontak/index.html',
+    './product/*/index.html'
+  ],
   darkMode: 'class',
   theme: {
     extend: {
