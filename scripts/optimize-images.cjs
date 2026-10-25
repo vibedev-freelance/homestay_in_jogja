@@ -7,6 +7,7 @@ const root = path.resolve(__dirname, '..');
 const outputDirectory = path.join(root, 'assets', 'optimized');
 
 const responsiveImages = [
+  ['assets/Hero/Prambanan.webp', 'hero-prambanan'],
   ['assets/Omah Pakualaman/IMG_3178.JPG.webp', 'omah-pakualaman'],
   ['assets/Girly Homestay/DSCF1389.webp', 'girly-homestay'],
   ['assets/Griya Pojok/DSCF1710.webp', 'griya-pojok'],
@@ -22,7 +23,8 @@ function contentHash(buffer) {
 async function writeResponsiveImage(source, name) {
   const variants = [];
 
-  for (const width of [480, 768]) {
+  const widths = name === 'hero-prambanan' ? [480, 768, 1280] : [480, 768, 1024];
+  for (const width of widths) {
     const buffer = await sharp(path.join(root, source))
       .resize({ width, withoutEnlargement: true })
       .webp({ quality: 78, effort: 6 })
@@ -77,8 +79,9 @@ async function main() {
 
 
   for (const [name, version] of versions) {
-    if (name.startsWith('gallery-') || responsiveImages.some(([, imageName]) => imageName === name)) {
-      for (const width of [480, 768]) {
+    if (responsiveImages.some(([, imageName]) => imageName === name)) {
+      const widths = name === 'hero-prambanan' ? [480, 768, 1280] : [480, 768, 1024];
+      for (const width of widths) {
         const asset = `${name}-${version}-${width}.webp`;
         const reference = new RegExp(
           `assets/optimized/${name}-(?:[a-f0-9]{12}-)?${width}\\.webp`,
@@ -100,6 +103,12 @@ async function main() {
     );
     html = html.replace(galleryAsset, `$1${name}-${version}$2`);
   }
+
+  const heroVersion = versions.get('hero-prambanan');
+  html = html.replace(
+    /src="assets\/Hero\/Prambanan\.webp"(?=\s+srcset="assets\/optimized\/hero-prambanan-)/,
+    `src="assets/optimized/hero-prambanan-${heroVersion}-768.webp"`
+  );
 
   await fs.writeFile(indexPath, html);
 }
