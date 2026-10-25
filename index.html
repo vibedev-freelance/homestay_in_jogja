@@ -8,8 +8,12 @@
  <meta name="description" content="Homestay dekat Malioboro, Homestay dekat Kraton Jogja, Homestay dekat Alun-Alun Jogja, Homestay keluarga di Jogja, dan Homestay dekat Stasiun Tugu Jogja dengan harga terjangkau."/>
  <link rel="preconnect" href="https://fonts.googleapis.com"/>
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"/>
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"/>
+ <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"/>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'"/>
+ <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"/></noscript>
+ <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap"/>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap" media="print" onload="this.media='all'"/>
+ <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1&display=swap"/></noscript>
  <!-- Font Awesome removed: Threads icon replaced with inline SVG to eliminate CDN font request -->
  <style>
   html {
@@ -92,7 +96,8 @@
    position: absolute !important;
   }
  </style>
-    <link rel="stylesheet" href="assets/site-567a9a723472.css"/>
+    <link rel="preload" href="assets/site-567a9a723472.css" as="style"/>
+  <link rel="stylesheet" href="assets/site-567a9a723472.css"/>
   <link rel="canonical" href="https://homestayinjogja.com/"/>
  <!-- social metadata:start -->
  <meta property="og:type" content="website"/>
@@ -992,8 +997,9 @@
     observer.observe(statsSection);
    } else {
     function checkVisibility() {
-     var rect = statsSection.getBoundingClientRect();
-     if (rect.top < window.innerHeight * 0.75 && rect.bottom > 0) {
+     // The section is below the initial viewport. Start the animation on the
+     // first scroll without forcing layout on every scroll event.
+     if (window.scrollY > 0) {
       startCounting();
       window.removeEventListener('scroll', checkVisibility);
      }
