@@ -738,42 +738,7 @@
  })();
 </script>
 
- <!-- Fixed Background Compatibility for iOS / Touch Devices -->
- <script>
-  (function () {
-   var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-   if (!isIOS) return;
 
-   var bgEls = document.querySelectorAll('.hero-fixed-bg');
-   if (!bgEls.length) return;
-
-   bgEls.forEach(function (el) {
-    el.style.setProperty('background-attachment', 'scroll', 'important');
-   });
-
-   var ticking = false;
-   function syncFixedBg() {
-    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    bgEls.forEach(function (el) {
-     var parent = el.parentElement;
-     var parentRect = parent ? parent.getBoundingClientRect() : el.getBoundingClientRect();
-     if (parentRect.bottom > 0 && parentRect.top < window.innerHeight) {
-      el.style.backgroundPositionY = scrollY + 'px';
-     }
-    });
-    ticking = false;
-   }
-
-   window.addEventListener('scroll', function () {
-    if (!ticking) {
-     window.requestAnimationFrame(syncFixedBg);
-     ticking = true;
-    }
-   }, { passive: true });
-   syncFixedBg();
-  })();
- </script>
  <!-- Mobile Menu & Smooth Scroll Script -->
  <script>
   (function () {

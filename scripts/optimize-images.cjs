@@ -23,7 +23,7 @@ function contentHash(buffer) {
 async function writeResponsiveImage(source, name) {
   const variants = [];
 
-  const widths = name === 'hero-prambanan' ? [480, 768, 1280] : [480, 768, 1024];
+  const widths = name === 'hero-prambanan' ? [480, 768] : [320, 480, 768, 1024];
   for (const width of widths) {
     const buffer = await sharp(path.join(root, source))
       .resize({ width, withoutEnlargement: true })
@@ -80,7 +80,7 @@ async function main() {
 
   for (const [name, version] of versions) {
     if (responsiveImages.some(([, imageName]) => imageName === name)) {
-      const widths = name === 'hero-prambanan' ? [480, 768, 1280] : [480, 768, 1024];
+      const widths = name === 'hero-prambanan' ? [480, 768] : [320, 480, 768, 1024];
       for (const width of widths) {
         const asset = `${name}-${version}-${width}.webp`;
         const reference = new RegExp(
